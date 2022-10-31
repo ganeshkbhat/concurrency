@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/ganeshkbhat/concurrency#readme",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --reporter spec --recursive"
   },
   "author": "Ganesh B",
   "license": "MIT"
