@@ -16,9 +16,6 @@
 'use strict';
 
 
-const { _concurrencyThreads, _concurrencyProcesses } = require("./src/concurrency.js");
-
-
-module.exports._concurrencyThreads = _concurrencyThreads;
-module.exports._concurrencyProcesses = _concurrencyProcesses;
+let { _concurrencyThreads, _concurrencyProcesses } = require("../index.js");
+console.log(_concurrencyThreads, _concurrencyProcesses);
 

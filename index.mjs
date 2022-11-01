@@ -15,3 +15,8 @@
 
 'use strict';
 
+import { _concurrencyThreads, _concurrencyProcesses } from "./src/concurrency.js";
+
+export { _concurrencyThreads, _concurrencyProcesses }
+export default _concurrencyThreads
+
