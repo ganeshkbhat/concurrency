@@ -1,6 +1,6 @@
 {
   "name": "concurrency.js",
-  "version": "0.0.22-beta",
+  "version": "0.0.23-beta",
   "description": "npm module to work with concurrency - worker threads and worker processes easily using simple functions and script files",
   "main": "index.js",
   "directories": {
