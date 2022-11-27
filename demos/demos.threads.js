@@ -6,7 +6,7 @@
  * Install: npm i concurrency.js --save
  * Github: https://github.com/ganeshkbhat/concurrency
  * npmjs Link: https://www.npmjs.com/package/
- * File: worker.threads.js
+ * File: demo.threads.js
  * File Description: 
  * 
 */
@@ -14,10 +14,3 @@
 /* eslint no-console: 0 */
 
 'use strict';
-
-
-const { parentPort } = require("worker_threads");
-
-parentPort.on("message", function (contents) {
-    return contents.callback(contents, parentPort);
-}.bind(contents, parentPort));

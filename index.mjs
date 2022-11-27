@@ -1,12 +1,12 @@
 /**
  * 
- * Package: 
+ * Package: concurrency.js
  * Author: Ganesh B
- * Description: 
- * Install: npm i  --save
+ * Description: npm module to work with concurrency - worker threads and worker processes easily using simple functions and script files
+ * Install: npm i concurrency.js --save
  * Github: https://github.com/ganeshkbhat/concurrency
  * npmjs Link: https://www.npmjs.com/package/
- * File: index.js
+ * File: index.mjs
  * File Description: 
  * 
 */
