@@ -6,7 +6,7 @@
  * Install: npm i  --save
  * Github: https://github.com/ganeshkbhat/concurrency
  * npmjs Link: https://www.npmjs.com/package/concurrency.js
- * File: test.demos.threads.js
+ * File: test.demos.cluster.js
  * File Description: 
  * 
 */
@@ -18,15 +18,10 @@
 
 const expect = require('chai').expect;
 
-describe('test-.mjs::concurrency.js: Test Suite for concurrency.js .threads Files', function () {
+describe('test-.mjs::concurrency.js: Test Suite for concurrency.js cluster Files', function () {
 
 
-    before(async function () {
-
-    });
-
-
-    describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js .threads in main repo directory', function () {
+    describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js cluster in main repo directory', function () {
 
         it('[Test A] Test for ', function (done) {
             // expect(100).to.equal(100);
