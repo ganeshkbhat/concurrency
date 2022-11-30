@@ -20,7 +20,7 @@ const http = require("node:http");
 const { cpus } = require("node:os");
 const process = require("node:process");
 
-function _concurrencyClusters(filename, num = cpus().length, options = {}, greet = true) {
+function _concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = true) {
     var worker, workers = {}, result = [];
     var messageData = {}, childMessageData = [];
 
@@ -32,7 +32,7 @@ function _concurrencyClusters(filename, num = cpus().length, options = {}, greet
         if (cluster.isPrimary) {
             num = num || cpus().length;
             for (let i = 0; i < num; i++) {
-                cluster.fork({ env: { ...process.env, FORK: 1, childData: options.childData, handlers: { ...options.handlers } } });
+                cluster.fork(filename, { env: { ...process.env, FORK: 1, childData: options.childData, handlers: { ...options.handlers } } });
             }
 
             for (const id in cluster.workers) {
@@ -44,7 +44,7 @@ function _concurrencyClusters(filename, num = cpus().length, options = {}, greet
                     messageData[id].push(msg);
                     if (!!options.handlers.messageHandlerFile) {
                         const cbFunction = require(options.handlers.messageHandlerFile);
-                        result.push({ message: cbFunction(msg), pid: null, event: null });
+                        result.push({ message: cbFunction(msg), pid: process.pid, event: "message" });
                     }
                     if (!!msg.childClose) {
                         childMessageData.push(msg);
@@ -65,7 +65,7 @@ function _concurrencyClusters(filename, num = cpus().length, options = {}, greet
                     console.log("error called");
                     if (!!options.handlers.errorHandlerFile) {
                         const cbFunction = require(options.handlers.errorHandlerFile);
-                        result.push({ message: cbFunction(e), pid: null, event: null });
+                        result.push({ message: cbFunction(e), pid: process.pid, event: "error" });
                     }
                     reject(e);
                 });
@@ -76,14 +76,14 @@ function _concurrencyClusters(filename, num = cpus().length, options = {}, greet
                         let connected = cluster.workers[id].isConnected();
                         const cbFunction = require(options.handlers.closeHandlerFile);
                         // result.push(cbFunction(code, signal, pid, connected));
-                        result.push({ message: cbFunction(code, signal, pid, connected), pid: null, event: null });
+                        result.push({ message: cbFunction(code, signal, pid, connected), pid: process.pid, event: "close" });
                     }
                 });
 
                 cluster.workers[id].on("exit", (code) => {
                     if (!!process.env.handlers.exitHandlerFile) {
                         const cbFunction = require(options.handlers.exitHandlerFile);
-                        result.push({ message: cbFunction(code), pid: null, event: null });
+                        result.push({ message: cbFunction(code), pid: process.pid, event: "exit" });
                     }
                     if (!Object.keys(cluster.workers).length) {
                         console.log("exit called");
@@ -95,11 +95,11 @@ function _concurrencyClusters(filename, num = cpus().length, options = {}, greet
         } else if (cluster.isWorker) {
             // } else {
             // return new Promise((resolve, reject) => {
-            process.on('message', (msg) => {
+            process.on("message", (msg) => {
                 childMessageData.push(msg);
                 // if (!!process.env.handlers.childMessageHandlerFile) {
                 //     const childCBFunction = require(process.env.handlers.childMessageHandlerFile);
-                //     result.push({ message: cbFunction(msg), pid: null, event: null });
+                //     result.push({ message: cbFunction(msg), pid: process.pid, event: "message" });
                 // }
                 if (!!msg.childClose) {
                     process.send({ childClose: true, pid: process.pid, childMessageData: childMessageData, result: result });

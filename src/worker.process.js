@@ -33,7 +33,7 @@ function _getRequireOrImport(module_name) {
     return require(module_name);
 }
 
-function _concurrencyProcesses(filename, options = {}, greet = true) {
+function _concurrencyProcesses(filename = __filename, options = {}, greet = true) {
     var messageData = [], childMessageData = [], result = [];
     if (!options.handlers) {
         options["handlers"] = {};
@@ -44,10 +44,10 @@ function _concurrencyProcesses(filename, options = {}, greet = true) {
                 childMessageData.push(data);
                 if (!!process.env.handlers.childMessageHandlerFile) {
                     const childCBFunction = require(process.env.handlers.childMessageHandlerFile);
-                    result.push({ message: childCBFunction(data), pid: null, event: null });
+                    result.push({ message: childCBFunction(data), pid: process.pid, event: "message" });
                 }
                 if (!!data.childClose) {
-                    process.send({ childClose: true, pid: process.pid, childMessageData: childMessageData });
+                    process.send({ childClose: true, pid: process.pid, childMessageData: childMessageData, result: result });
                 }
             }
         }
@@ -56,12 +56,12 @@ function _concurrencyProcesses(filename, options = {}, greet = true) {
         // process.stdin.on("message", console.log);
         // process.stderr.on("message", console.log);
 
-        process.on('message', options.callback);
-        process.on('exit', (code) => {
+        process.on("message", options.callback);
+        process.on("exit", (code) => {
             // console.log(`worker.process.js: _concurrencyProcesses: Child Process PID:${process.pid}: EXIT CODE ${code} CHILD: `, childMessageData);
             if (!!process.env.handlers.exitHandlerFile) {
                 const cbFunction = require(options.handlers.exitHandlerFile);
-                result.push({ message: cbFunction(code), pid: null, event: null });
+                result.push({ message: cbFunction(code), pid: process.pid, event: "exit" });
             }
         });
         if (!!greet) {
@@ -84,7 +84,7 @@ function _concurrencyProcesses(filename, options = {}, greet = true) {
             child.on('error', (e) => {
                 if (!!options.handlers.errorHandlerFile) {
                     const cbFunction = require(options.handlers.errorHandlerFile);
-                    result.push({ message: cbFunction(e), pid: null, event: null });
+                    result.push({ message: cbFunction(e), pid: process.pid, event: 'error' });
                 }
                 reject(e);
             });
@@ -93,15 +93,15 @@ function _concurrencyProcesses(filename, options = {}, greet = true) {
                 let pid = child.pid, connected = child.connected;
                 if (!!options.handlers.closeHandlerFile) {
                     const cbFunction = require(options.handlers.closeHandlerFile);
-                    result.push({ message: cbFunction(code, signal, pid, connected), pid: null, event: null });
+                    result.push({ message: cbFunction(code, signal, pid, connected), pid: process.pid, event: "close" });
                 }
             });
 
-            child.on('message', (data) => {
+            child.on("message", (data) => {
                 messageData.push(data);
                 if (!!options.handlers.callbackFile) {
                     const cbFunction = require(options.handlers.callbackFile);
-                    result.push({ message: cbFunction(data), pid: null, event: null });
+                    result.push({ message: cbFunction(data), pid: process.pid, event: "message" });
                 }
                 if (!!data.childClose) {
                     // try {

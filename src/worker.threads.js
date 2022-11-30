@@ -32,7 +32,7 @@ function _getRequireOrImport(module_name) {
     return require(module_name);
 }
 
-function _concurrencyThreads(filename, options = {}, greet = true) {
+function _concurrencyThreads(filename = __filename, options = {}, greet = true) {
 
     const { Worker, isMainThread, parentPort } = require('worker_threads');
     var messageData = [], childMessageData = [], result = [];
@@ -54,7 +54,7 @@ function _concurrencyThreads(filename, options = {}, greet = true) {
                     result.push({ message: cbFunction(e), pid: null, event: null });
                 }
             });
-            worker.on('message', function (mainData) {
+            worker.on("message", function (mainData) {
                 messageData.push(mainData);
                 if (!!options.handlers.messageHandlerFile) {
                     const cbFunction = require(options.handlers.messageHandlerFile);
@@ -95,7 +95,7 @@ function _concurrencyThreads(filename, options = {}, greet = true) {
                 resolve({ messageData, result });
             });
 
-            worker.on('exit', (code) => {
+            worker.on("exit", (code) => {
                 console.log(`demo.threads.js:_concurrencyThreads: Main Thread PID ${process.pid} threadID:${worker.threadId}, filename: ${filename}, ExitCode: ${code}, messageData`, messageData);
                 if (!!options.handlers.exitHandlerFile) {
                     const cbFunction = require(options.handlers.exitHandlerFile);

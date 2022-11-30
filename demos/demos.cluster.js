@@ -19,7 +19,7 @@ _concurrencyClusters(
     8,
     { url: "https://www.google.com", data: "Testing parent data", childData: "Test data from child" }
 ).then((d) => {
-    console.log("Data fetched", d);
+    console.log("Data fetched", JSON.stringify(d));
 }).catch((e) => {
     console.log(e.toString());
 })
