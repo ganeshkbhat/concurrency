@@ -14,3 +14,23 @@
 /* eslint no-console: 0 */
 
 'use strict';
+
+const path = require("path");
+let { _concurrencyThreads } = require("../index.js");
+
+// _concurrencyThreads(path.join("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.threads.js"), { url: "https://www.google.com", data: "Testing data" })
+
+// function test() {
+//     let r = _concurrencyThreads(path.join("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.threads.js"), { url: "https://www.google.com", data: "Testing data" });
+//     r.then(function (data) { console.log(data) })
+// }
+
+
+_concurrencyThreads(__filename, { url: "https://www.google.com", data: "Testing data" })
+// .catch((e) => { console.log(e.toString()); setTimeout(() => {process.exit(e);}, 5000) })
+
+setTimeout(() => {
+    console.log(`demo.threads.js: Closing process ${process.pid}: Timeout 1: 20000 `, __filename);
+    process.exit(0);
+}, 20000);
+

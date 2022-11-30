@@ -15,9 +15,9 @@
 
 'use strict';
 
-import { _concurrencyThreads, _concurrencyProcesses } from "./src/concurrency.js";
+import { _concurrencyThreads, _concurrencyProcesses } from "./index.js";
 
 export { _concurrencyThreads, _concurrencyProcesses }
 
-export default _concurrencyThreads
+export default _concurrencyProcesses
 

@@ -16,9 +16,11 @@
 'use strict';
 
 
-const { _concurrencyThreads, _concurrencyProcesses } = require("./src/concurrency.js");
+const { _concurrencyThreads } = require("./src/worker.threads.js");
+const { _concurrencyProcesses } = require("./src/worker.process.js");
+const { _concurrencyClusters } = require("./src/worker.cluster.js");
 
 
 module.exports._concurrencyThreads = _concurrencyThreads;
 module.exports._concurrencyProcesses = _concurrencyProcesses;
-
+module.exports._concurrencyClusters = _concurrencyClusters;
