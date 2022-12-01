@@ -26,11 +26,11 @@ let { _concurrencyThreads } = require("../index.js");
 // }
 
 
-_concurrencyThreads(__filename, { url: "https://www.google.com", data: "Testing data" })
+_concurrencyThreads(__filename, { url: "https://www.google.com", data: "Testing data", childData: "Testing child data" }).then((d) => console.log(JSON.stringify(d)))
 // .catch((e) => { console.log(e.toString()); setTimeout(() => {process.exit(e);}, 5000) })
 
-setTimeout(() => {
-    console.log(`demo.threads.js: Closing process ${process.pid}: Timeout 1: 20000 `, __filename);
-    process.exit(0);
-}, 20000);
+// setTimeout(() => {
+//     console.log(`demo.threads.js: Closing process ${process.pid}: Timeout 1: 20000 `, __filename);
+//     process.exit(0);
+// }, 20000);
 

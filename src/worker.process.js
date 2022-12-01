@@ -42,12 +42,12 @@ function _concurrencyProcesses(filename = __filename, options = {}, greet = true
         if (!options.callback) {
             options["callback"] = function (data) {
                 childMessageData.push(data);
-                if (!!process.env.handlers.childMessageHandlerFile) {
-                    const childCBFunction = require(process.env.handlers.childMessageHandlerFile);
+                if (!!process.env.handlers.childMessage) {
+                    const childCBFunction = require(process.env.handlers.childMessage);
                     result.push({ message: childCBFunction(data), pid: process.pid, event: "message" });
                 }
-                if (!!data.childClose) {
-                    process.send({ childClose: true, pid: process.pid, childMessageData: childMessageData, result: result });
+                if (!!data.closeChild) {
+                    process.send({ closeChild: true, pid: process.pid, childMessageData: childMessageData, result: result });
                 }
             }
         }
@@ -57,16 +57,19 @@ function _concurrencyProcesses(filename = __filename, options = {}, greet = true
         // process.stderr.on("message", console.log);
 
         process.on("message", options.callback);
+
         process.on("exit", (code) => {
             // console.log(`worker.process.js: _concurrencyProcesses: Child Process PID:${process.pid}: EXIT CODE ${code} CHILD: `, childMessageData);
-            if (!!process.env.handlers.exitHandlerFile) {
-                const cbFunction = require(options.handlers.exitHandlerFile);
+            if (!!process.env.handlers.childExit) {
+                const cbFunction = require(process.env.handlers.childExit);
                 result.push({ message: cbFunction(code), pid: process.pid, event: "exit" });
             }
         });
+
         if (!!greet) {
             process.send(`Child Process PID:${process.pid}: Hello from Child Process`);
         }
+
         (!!process.env.childData) ? child.send(process.env.childData) : null;
 
     } else {
@@ -81,9 +84,10 @@ function _concurrencyProcesses(filename = __filename, options = {}, greet = true
                     ...process.env, FORK: 1, childData: options.childData, handlers: { ...options.handlers }
                 }
             });
+
             child.on('error', (e) => {
-                if (!!options.handlers.errorHandlerFile) {
-                    const cbFunction = require(options.handlers.errorHandlerFile);
+                if (!!options.handlers.error) {
+                    const cbFunction = require(options.handlers.error);
                     result.push({ message: cbFunction(e), pid: process.pid, event: 'error' });
                 }
                 reject(e);
@@ -91,22 +95,23 @@ function _concurrencyProcesses(filename = __filename, options = {}, greet = true
 
             child.on("close", function (code, signal) {
                 let pid = child.pid, connected = child.connected;
-                if (!!options.handlers.closeHandlerFile) {
-                    const cbFunction = require(options.handlers.closeHandlerFile);
+                if (!!options.handlers.close) {
+                    const cbFunction = require(options.handlers.close);
                     result.push({ message: cbFunction(code, signal, pid, connected), pid: process.pid, event: "close" });
                 }
             });
 
             child.on("message", (data) => {
                 messageData.push(data);
-                if (!!options.handlers.callbackFile) {
-                    const cbFunction = require(options.handlers.callbackFile);
+                if (!!options.handlers.message) {
+                    const cbFunction = require(options.handlers.message);
                     result.push({ message: cbFunction(data), pid: process.pid, event: "message" });
                 }
-                if (!!data.childClose) {
+                if (!!data.closeChild) {
                     // try {
                     // // Stops the child process on message from child
-                    // // Getting Error: AbortError: The operation was aborted
+                    // // Getting Error: 
+                    // // AbortError: The operation was aborted
                     //     controller.abort(); 
                     // } catch (e) {
                     //     child.kill(0);
@@ -122,7 +127,7 @@ function _concurrencyProcesses(filename = __filename, options = {}, greet = true
                 child.send(`Master Process PID:${process.pid}: Hello from Master Process`);
             }
             options.data ? child.send(options.data) : null;
-            child.send({ childClose: true });
+            child.send({ closeChild: true });
         })
     }
 }

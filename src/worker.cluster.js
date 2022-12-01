@@ -42,11 +42,11 @@ function _concurrencyClusters(filename = __filename, num = cpus().length, option
                         messageData[id] = [];
                     }
                     messageData[id].push(msg);
-                    if (!!options.handlers.messageHandlerFile) {
-                        const cbFunction = require(options.handlers.messageHandlerFile);
+                    if (!!options.handlers.message) {
+                        const cbFunction = require(options.handlers.message);
                         result.push({ message: cbFunction(msg), pid: process.pid, event: "message" });
                     }
-                    if (!!msg.childClose) {
+                    if (!!msg.closeChild) {
                         childMessageData.push(msg);
                         cluster.workers[id].disconnect();
                     }
@@ -63,8 +63,8 @@ function _concurrencyClusters(filename = __filename, num = cpus().length, option
 
                 cluster.workers[id].on("error", function (e) {
                     console.log("error called");
-                    if (!!options.handlers.errorHandlerFile) {
-                        const cbFunction = require(options.handlers.errorHandlerFile);
+                    if (!!options.handlers.error) {
+                        const cbFunction = require(options.handlers.error);
                         result.push({ message: cbFunction(e), pid: process.pid, event: "error" });
                     }
                     reject(e);
@@ -72,17 +72,17 @@ function _concurrencyClusters(filename = __filename, num = cpus().length, option
 
                 cluster.workers[id].on("close", function (code, signal) {
                     console.log("close called");
-                    if (!!options.handlers.closeHandlerFile) {
+                    if (!!options.handlers.close) {
                         let connected = cluster.workers[id].isConnected();
-                        const cbFunction = require(options.handlers.closeHandlerFile);
+                        const cbFunction = require(options.handlers.close);
                         // result.push(cbFunction(code, signal, pid, connected));
                         result.push({ message: cbFunction(code, signal, pid, connected), pid: process.pid, event: "close" });
                     }
                 });
 
                 cluster.workers[id].on("exit", (code) => {
-                    if (!!process.env.handlers.exitHandlerFile) {
-                        const cbFunction = require(options.handlers.exitHandlerFile);
+                    if (!!process.env.handlers.exit) {
+                        const cbFunction = require(options.handlers.exit);
                         result.push({ message: cbFunction(code), pid: process.pid, event: "exit" });
                     }
                     if (!Object.keys(cluster.workers).length) {
@@ -90,19 +90,19 @@ function _concurrencyClusters(filename = __filename, num = cpus().length, option
                     }
                 });
 
-                cluster.workers[id].send({ childClose: true })
+                cluster.workers[id].send({ closeChild: true })
             }
         } else if (cluster.isWorker) {
             // } else {
             // return new Promise((resolve, reject) => {
             process.on("message", (msg) => {
                 childMessageData.push(msg);
-                // if (!!process.env.handlers.childMessageHandlerFile) {
-                //     const childCBFunction = require(process.env.handlers.childMessageHandlerFile);
+                // if (!!process.env.handlers.childMessage) {
+                //     const childCBFunction = require(process.env.handlers.childMessage);
                 //     result.push({ message: cbFunction(msg), pid: process.pid, event: "message" });
                 // }
-                if (!!msg.childClose) {
-                    process.send({ childClose: true, pid: process.pid, childMessageData: childMessageData, result: result });
+                if (!!msg.closeChild) {
+                    process.send({ closeChild: true, pid: process.pid, childMessageData: childMessageData, result: result });
                 }
             });
 
