@@ -20,7 +20,7 @@ const http = require("node:http");
 const { cpus } = require("node:os");
 const process = require("node:process");
 
-function _concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = true) {
+function _concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false) {
     var worker, workers = {}, result = [];
     var messageData = {}, childMessageData = [];
 
@@ -44,14 +44,14 @@ function _concurrencyClusters(filename = __filename, num = cpus().length, option
                     messageData[id].push(msg);
                     if (!!options.handlers.message) {
                         const cbFunction = require(options.handlers.message);
-                        result.push({ message: cbFunction(msg), pid: process.pid, event: "message" });
+                        result.push({ message: cbFunction(msg), id: id, pid: process.pid, event: "message" });
                     }
                     if (!!msg.closeChild) {
                         childMessageData.push(msg);
                         cluster.workers[id].disconnect();
                     }
                     if (!Object.keys(cluster.workers).length) {
-                        resolve({ messageData: messageData, childMessageData: childMessageData, result: result });
+                        resolve({ messageData: messageData, result: result });
                     }
                 });
 
@@ -59,13 +59,13 @@ function _concurrencyClusters(filename = __filename, num = cpus().length, option
                     cluster.workers[id].send("Message from Parent: " + process.pid.toString());
                 }
 
-                (!!options.data) ? cluster.workers[id].send({ id, pid: process.pid.toString(), msg: options.data }) : null;
+                (!!options.data) ? cluster.workers[id].send({ id, pid: process.pid, msg: options.data }) : null;
 
                 cluster.workers[id].on("error", function (e) {
                     console.log("error called");
                     if (!!options.handlers.error) {
                         const cbFunction = require(options.handlers.error);
-                        result.push({ message: cbFunction(e), pid: process.pid, event: "error" });
+                        result.push({ message: cbFunction(e), id: id, pid: process.pid, event: "error" });
                     }
                     reject(e);
                 });
@@ -76,14 +76,14 @@ function _concurrencyClusters(filename = __filename, num = cpus().length, option
                         let connected = cluster.workers[id].isConnected();
                         const cbFunction = require(options.handlers.close);
                         // result.push(cbFunction(code, signal, pid, connected));
-                        result.push({ message: cbFunction(code, signal, pid, connected), pid: process.pid, event: "close" });
+                        result.push({ message: cbFunction(code, signal, pid, connected), id: id, pid: process.pid, event: "close" });
                     }
                 });
 
                 cluster.workers[id].on("exit", (code) => {
                     if (!!process.env.handlers.exit) {
                         const cbFunction = require(options.handlers.exit);
-                        result.push({ message: cbFunction(code), pid: process.pid, event: "exit" });
+                        result.push({ message: cbFunction(code), id: id, pid: process.pid, event: "exit" });
                     }
                     if (!Object.keys(cluster.workers).length) {
                         console.log("exit called");
@@ -110,7 +110,7 @@ function _concurrencyClusters(filename = __filename, num = cpus().length, option
                 process.send("Message from worker: " + process.pid.toString());
             }
 
-            (!!process.env.childData) ? child.send({ id, pid: process.pid.toString(), msg: process.env.childData }) : null;
+            (!!process.env.childData) ? child.send({ pid: process.pid, msg: process.env.childData }) : null;
         }
     });
 }

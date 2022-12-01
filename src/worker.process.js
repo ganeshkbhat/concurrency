@@ -15,9 +15,9 @@
 
 'use strict';
 
-const path = require('path');
-const fs = require('fs');
-const { sign } = require('crypto');
+const path = require("path");
+const fs = require("fs");
+const { sign } = require("crypto");
 
 
 /**
@@ -33,7 +33,7 @@ function _getRequireOrImport(module_name) {
     return require(module_name);
 }
 
-function _concurrencyProcesses(filename = __filename, options = {}, greet = true) {
+function _concurrencyProcesses(filename = __filename, options = {}, greet = false) {
     var messageData = [], childMessageData = [], result = [];
     if (!options.handlers) {
         options["handlers"] = {};
@@ -75,7 +75,7 @@ function _concurrencyProcesses(filename = __filename, options = {}, greet = true
     } else {
 
         return new Promise((resolve, reject) => {
-            const { fork, spawn } = require('child_process');
+            const { fork, spawn } = require("child_process");
             const controller = new AbortController();
             const { signal } = controller;
 
@@ -85,10 +85,10 @@ function _concurrencyProcesses(filename = __filename, options = {}, greet = true
                 }
             });
 
-            child.on('error', (e) => {
+            child.on("error", (e) => {
                 if (!!options.handlers.error) {
                     const cbFunction = require(options.handlers.error);
-                    result.push({ message: cbFunction(e), pid: process.pid, event: 'error' });
+                    result.push({ message: cbFunction(e), pid: process.pid, event: "error" });
                 }
                 reject(e);
             });
