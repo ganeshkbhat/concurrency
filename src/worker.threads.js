@@ -45,7 +45,7 @@ function _concurrencyThreads(filename = __filename, options = {}, greet = false)
             // return new Promise((resolve, reject) => {
             const worker = new Worker(filename);
             if (!!greet) {
-                worker.postMessage(`Hello, world! - Server: ${process.pid}`);
+                worker.postMessage({ pid: process.pid, message: `Hello, world! - Server: ${process.pid}` });
             }
 
             worker.on("connection", (e) => {
@@ -147,7 +147,7 @@ function _concurrencyThreads(filename = __filename, options = {}, greet = false)
                         result.push({ message: childCBFunction(mainData), pid: process.pid, event: "message" });
                     }
                     if (!!mainData.closeChild) {
-                        parentPort.postMessage({ closeChild: true, pid: process.pid, childMessageData: childMessageData });
+                        parentPort.postMessage({ closeChild: true, pid: process.pid, childMessageData: childMessageData, result: result });
                     }
                 }
             }
@@ -187,7 +187,7 @@ function _concurrencyThreads(filename = __filename, options = {}, greet = false)
             });
 
             if (!!greet) {
-                parentPort.postMessage(`"Hello from child. - Thread: ${process.pid}`);
+                parentPort.postMessage({ pid: process.pid, message: `"Hello from child. - Thread: ${process.pid}` });
             }
         }
     })

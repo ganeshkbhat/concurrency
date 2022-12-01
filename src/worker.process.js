@@ -67,10 +67,10 @@ function _concurrencyProcesses(filename = __filename, options = {}, greet = fals
         });
 
         if (!!greet) {
-            process.send(`Child Process PID:${process.pid}: Hello from Child Process`);
+            process.send({ pid: process.pid, message: `Child Process PID:${process.pid}: Hello from Child Process` });
         }
 
-        (!!process.env.childData) ? child.send(process.env.childData) : null;
+        (!!process.env.childData) ? child.send({ pid: process.pid, message: process.env.childData }) : null;
 
     } else {
 
@@ -124,9 +124,9 @@ function _concurrencyProcesses(filename = __filename, options = {}, greet = fals
             });
 
             if (!!greet) {
-                child.send(`Master Process PID:${process.pid}: Hello from Master Process`);
+                child.send({ pid: process.pid, message: `Master Process PID:${process.pid}: Hello from Master Process` });
             }
-            options.data ? child.send(options.data) : null;
+            options.data ? child.send({ pid: process.pid, message: options.data }) : null;
             child.send({ closeChild: true });
         })
     }
