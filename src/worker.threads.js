@@ -80,7 +80,6 @@ function _concurrencyThreads(filename = __filename, options = {}, greet = false)
                     const cbFunction = require(options.handlers.online);
                     result.push({ message: cbFunction(), pid: process.pid, event: "online" });
                 }
-                // console.log(`ID:${worker.threadId}`)
             });
 
             worker.on("error", (e) => {
@@ -118,6 +117,7 @@ function _concurrencyThreads(filename = __filename, options = {}, greet = false)
                 if (code !== 0) {
                     reject(new Error(`Worker (PID ${process.pid}) threadID:${worker.threadId} stopped with exit code ${code}`));
                 }
+                reject(new Error(`Worker (PID ${process.pid}) threadID:${worker.threadId} stopped with exit code ${code}`));
             });
             worker.postMessage({ closeChild: true });
             // });
@@ -190,7 +190,7 @@ function _concurrencyThreads(filename = __filename, options = {}, greet = false)
                 parentPort.postMessage({ pid: process.pid, message: `"Hello from child. - Thread: ${process.pid}` });
             }
         }
-    })
+    });
 
 }
 

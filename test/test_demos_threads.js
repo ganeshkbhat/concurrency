@@ -17,24 +17,30 @@
 
 
 const expect = require('chai').expect;
+const path = require("path");
+const { _concurrencyThreads } = require("../index.js");
 
 describe('test-.mjs::concurrency.js: Test Suite for concurrency.js .threads Files', function () {
 
-
-    before(async function () {
-
-    });
-
-
     describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js .threads in main repo directory', function () {
 
+        var responses
+        before(function (done) {
+            _concurrencyThreads(__filename, { url: "https://www.google.com", data: "Testing data", childData: "Testing child data" })
+                .then((d) => {
+                    console.log(JSON.stringify(d));
+                    responses = d;
+                    done();
+                })
+            console.log(responses);
+        });
+
         it('[Test A] Test for ', function (done) {
-            // expect(100).to.equal(100);
+            expect(100).to.equal(100);
             done();
         });
 
     });
-
 
 });
 

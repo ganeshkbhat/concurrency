@@ -81,7 +81,7 @@ function _concurrencyClusters(filename = __filename, num = cpus().length, option
                 });
 
                 cluster.workers[id].on("exit", (code) => {
-                    if (!!process.env.handlers.exit) {
+                    if (!!options.handlers.exit) {
                         const cbFunction = require(options.handlers.exit);
                         result.push({ return: cbFunction(code), id: id, pid: process.pid, event: "exit" });
                     }
@@ -113,10 +113,11 @@ function _concurrencyClusters(filename = __filename, num = cpus().length, option
             (!!process.env.childData) ? child.send({ pid: process.pid, message: process.env.childData }) : null;
         }
     });
+    
 }
 
 if (process.env.FORK) {
-    _concurrencyClusters()
+    _concurrencyClusters();
 }
 
 

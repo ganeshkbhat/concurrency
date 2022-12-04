@@ -133,7 +133,7 @@ function _concurrencyProcesses(filename = __filename, options = {}, greet = fals
 }
 
 if (process.env.FORK) {
-    _concurrencyProcesses()
+    _concurrencyProcesses();
 }
 
 module.exports._concurrencyProcesses = _concurrencyProcesses
