@@ -19,8 +19,10 @@
 const { _concurrencyThreads } = require("./src/worker.threads.js");
 const { _concurrencyProcesses } = require("./src/worker.process.js");
 const { _concurrencyClusters } = require("./src/worker.cluster.js");
+const { _concurrencyThreadsAsync } = require("./src/worker.thread.async.js");
 
 
 module.exports._concurrencyThreads = _concurrencyThreads;
 module.exports._concurrencyProcesses = _concurrencyProcesses;
 module.exports._concurrencyClusters = _concurrencyClusters;
+module.exports._concurrencyThreadsAsync = _concurrencyThreadsAsync;

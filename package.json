@@ -1,6 +1,6 @@
 {
   "name": "concurrency.js",
-  "version": "0.0.24-beta",
+  "version": "0.0.25-beta",
   "description": "npm module to work with concurrency - worker threads and worker processes (currrently only fork method) easily using simple functions and script files",
   "main": "index.js",
   "directories": {
