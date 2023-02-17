@@ -18,15 +18,10 @@
 const path = require("path");
 let { _concurrencyThreads } = require("../index.js");
 
-// _concurrencyThreads(path.join("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.threads.js"), { url: "https://www.google.com", data: "Testing data" })
-
-// function test() {
-//     let r = _concurrencyThreads(path.join("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.threads.js"), { url: "https://www.google.com", data: "Testing data" });
-//     r.then(function (data) { console.log(data) })
-// }
+// _concurrencyThreads(path.join("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.threads.js"), { data: { url: "https://www.google.com", message: "Testing data" } });
 
 
-_concurrencyThreads(__filename, { url: "https://www.google.com", data: "Testing data", childData: "Testing child data" }).then((d) => console.log(JSON.stringify(d)))
+_concurrencyThreads(__filename, { url: "https://www.google.com", data: "Testing data", childData: "Testing child data" }, true).then((d) => console.log(JSON.stringify(d)))
 // .catch((e) => { console.log(e.toString()); setTimeout(() => {process.exit(e);}, 5000) })
 
 // setTimeout(() => {
@@ -34,6 +29,6 @@ _concurrencyThreads(__filename, { url: "https://www.google.com", data: "Testing 
 //     process.exit(0);
 // }, 20000);
 
-// setTimeout(() => console.log(`demo.processes.js: run file PID ${process.pid}: Interval 2: 10000 `, process.pid), 10000);
-// setTimeout(() => console.log(`demo.processes.js: Closing process ${process.pid}: Timeout 1: 10000 `, process.exit()), 20000);
+setTimeout(() => console.log(`demo.processes.js: Run file PID ${process.pid}: Interval 2: 10000 `, process.pid), 10000);
+setTimeout(() => console.log(`demo.processes.js: Closing process ${process.pid}: Timeout 1: 10000 `, process.exit()), 20000);
 

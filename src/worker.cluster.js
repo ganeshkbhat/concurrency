@@ -62,7 +62,6 @@ function _concurrencyClusters(filename = __filename, num = cpus().length, option
                 (!!options.data) ? cluster.workers[id].send({ id: id, pid: process.pid, message: options.data }) : null;
 
                 cluster.workers[id].on("error", function (e) {
-                    console.log("error called");
                     if (!!options.handlers.error) {
                         const cbFunction = require(options.handlers.error);
                         result.push({ return: cbFunction(e), id: id, pid: process.pid, event: "error" });
@@ -71,7 +70,6 @@ function _concurrencyClusters(filename = __filename, num = cpus().length, option
                 });
 
                 cluster.workers[id].on("close", function (code, signal) {
-                    console.log("close called");
                     if (!!options.handlers.close) {
                         let connected = cluster.workers[id].isConnected();
                         const cbFunction = require(options.handlers.close);

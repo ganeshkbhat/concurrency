@@ -19,27 +19,13 @@ const path = require('path');
 const fs = require('fs');
 
 
-/**
- *
- *
- * @param {*} module_name
- * @return {*} 
- */
-function _getRequireOrImport(module_name) {
-    if (process.versions.node.split('.')[0] > "14") {
-        return import(module_name);
-    }
-    return require(module_name);
-}
 
 function _concurrencyThreads(filename = __filename, options = {}, greet = false) {
-
     const { Worker, isMainThread, parentPort } = require('worker_threads');
-    var messageData = [], childMessageData = [], result = [];
 
-    if (!options.handlers) {
-        options["handlers"] = {};
-    }
+    var messageData = [], childMessageData = [], result = [];
+    if (!options.handlers) { options["handlers"] = {}; }
+
     return new Promise((resolve, reject) => {
         if (isMainThread) {
             // return new Promise((resolve, reject) => {
@@ -49,7 +35,7 @@ function _concurrencyThreads(filename = __filename, options = {}, greet = false)
             }
 
             worker.on("connection", (e) => {
-                console.log(`Main thread ${process.pid} due to connection event`, e.toString());
+                // console.log(`Main thread ${process.pid} due to connection event`, e.toString());
                 if (!!options.handlers.connection) {
                     const cbFunction = require(options.handlers.connection);
                     result.push({ message: cbFunction(e), pid: process.pid, event: "connection" });
@@ -70,7 +56,7 @@ function _concurrencyThreads(filename = __filename, options = {}, greet = false)
                     } catch (e) {
                         worker.terminate();
                     }
-                    resolve({ messageData, result });
+                    resolve({ message: messageData, result: result });
                 }
                 // console.log(`demo.threads.js:_concurrencyThreads: Main Thread PID ${process.pid}, filename: ${filename}, data: ${mainData}`);
             });
@@ -117,7 +103,7 @@ function _concurrencyThreads(filename = __filename, options = {}, greet = false)
                 if (code !== 0) {
                     reject(new Error(`Worker (PID ${process.pid}) threadID:${worker.threadId} stopped with exit code ${code}`));
                 }
-                reject(new Error(`Worker (PID ${process.pid}) threadID:${worker.threadId} stopped with exit code ${code}`));
+                // reject(new Error(`Worker (PID ${process.pid}) threadID:${worker.threadId} stopped with exit code ${code}`));
             });
             worker.postMessage({ closeChild: true });
             // });
@@ -191,7 +177,6 @@ function _concurrencyThreads(filename = __filename, options = {}, greet = false)
             }
         }
     });
-
 }
 
 module.exports._concurrencyThreads = _concurrencyThreads

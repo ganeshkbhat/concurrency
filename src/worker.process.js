@@ -121,7 +121,7 @@ function _concurrencyProcesses(filename = __filename, options = {}, greet = fals
                     // }
                     // 
                     child.kill(0);
-                    resolve({ messageData, result });
+                    resolve({ message: messageData, result: result });
                 }
             });
 
@@ -138,4 +138,4 @@ if (process.env.FORK) {
     _concurrencyProcesses();
 }
 
-module.exports._concurrencyProcesses = _concurrencyProcesses
+module.exports._concurrencyProcesses = _concurrencyProcesses;
