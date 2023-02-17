@@ -26,3 +26,10 @@ module.exports._concurrencyThreads = _concurrencyThreads;
 module.exports._concurrencyProcesses = _concurrencyProcesses;
 module.exports._concurrencyClusters = _concurrencyClusters;
 module.exports._concurrencyThreadsAsync = _concurrencyThreadsAsync;
+
+module.exports.default = {
+    _concurrencyThreads,
+    _concurrencyProcesses,
+    _concurrencyClusters,
+    _concurrencyThreadsAsync
+};
