@@ -108,6 +108,7 @@ function _concurrencyProcesses(filename = __filename, options = {}, greet = fals
                     result.push({ message: cbFunction(data), pid: process.pid, event: "message" });
                 }
                 if (!!data.closeChild) {
+                    // 
                     // try {
                     // // Stops the child process on message from child
                     // // Getting Error: 
@@ -118,6 +119,7 @@ function _concurrencyProcesses(filename = __filename, options = {}, greet = fals
                     // } finally {
                     //     resolve({ messageData, result });
                     // }
+                    // 
                     child.kill(0);
                     resolve({ messageData, result });
                 }
@@ -128,7 +130,7 @@ function _concurrencyProcesses(filename = __filename, options = {}, greet = fals
             }
             options.data ? child.send({ pid: process.pid, message: options.data }) : null;
             child.send({ closeChild: true });
-        })
+        });
     }
 }
 
