@@ -81,4 +81,4 @@ function _concurrencyThreadsAsync(command, options) {
     }
 }
 
-module.exports = _concurrencyThreadsAsync;
+module.exports._concurrencyThreadsAsync = _concurrencyThreadsAsync;

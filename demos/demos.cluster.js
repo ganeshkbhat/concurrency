@@ -40,7 +40,7 @@ let { _concurrencyClusters } = require("../index.js");
 // }
 
 function concurrency() {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
         _concurrencyClusters(
             path.join("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.cluster.js"),
             8,
@@ -51,7 +51,7 @@ function concurrency() {
         }).catch((e) => {
             console.log(e.toString());
             reject(e);
-        })
+        });
     });
 }
 

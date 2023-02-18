@@ -38,7 +38,25 @@ describe('test-.mjs::concurrency.js: Test Suite for concurrency.js cluster Files
         //     )
         // });
 
-        it('[Test A] Test for ', function (done) {
+        it('[Test A] Test for cluster function demos', function (done) {
+
+            function concurrency() {
+                return new Promise(function (resolve, reject) {
+                    _concurrencyClusters(
+                        path.join("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.cluster.js"),
+                        8,
+                        { url: "https://www.google.com", data: "Testing parent data", childData: "Test data from child" }
+                    ).then((d) => {
+                        console.log("Data fetched", JSON.stringify(d));
+                        resolve(d);
+                    }).catch((e) => {
+                        console.log(e.toString());
+                        reject(e);
+                    })
+                });
+            }
+
+            concurrency();
             expect(100).to.equal(100);
             done();
         });

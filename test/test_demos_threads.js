@@ -20,27 +20,22 @@ const expect = require('chai').expect;
 const path = require("path");
 const { _concurrencyThreads } = require("../index.js");
 
-describe('test-.mjs::concurrency.js: Test Suite for concurrency.js .threads Files', function () {
 
-    describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js .threads in main repo directory', function () {
+describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js .threads in main repo directory', function () {
 
-        var responses
-        before(function (done) {
-            _concurrencyThreads(__filename, { url: "https://www.google.com", data: "Testing data", childData: "Testing child data" })
-                .then((d) => {
-                    console.log(JSON.stringify(d));
-                    responses = d;
-                    done();
-                })
-            console.log(responses);
-        });
-
-        it('[Test A] Test for ', function (done) {
-            expect(100).to.equal(100);
-            done();
-        });
-
+    it('[Test A] Test for threads ', function (done) {
+        var responses;
+        _concurrencyThreads(__filename, { data: { data: "Testing data", url: "https://www.google.com" }, childData: "Testing child data" })
+            .then((d) => {
+                console.log(JSON.stringify(d));
+                responses = d;
+                done();
+            });
+        // console.log(responses);
+        expect(responses).to.equal({ "message": [{ "pid": 11660, "message": "\"Hello from child. - Thread: 11660", "threadId": 1 }, { "closeChild": true, "pid": 11660, "childMessageData": [{ "pid": 11660, "message": "Hello, world! - Server: 11660" }, { "closeChild": true }], "result": [], "threadId": 1 }], "result": [] });
+        done();
     });
 
 });
+
 

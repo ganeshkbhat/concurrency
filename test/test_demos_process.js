@@ -20,29 +20,25 @@ const expect = require('chai').expect;
 const path = require("path");
 const { _concurrencyProcesses } = require("../index.js");
 
-describe('test-.mjs::concurrency.js: Test Suite for concurrency.js .process Files', function () {
 
-    describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js .process in main repo directory', function () {
+describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js .process in main repo directory', function () {
 
-        // DONE DONOT TOUCH
+    
 
-        // var responses
-        // before(function (done) {
-        //     _concurrencyProcesses(
-        //         path.join("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.process.js"),
-        //         { url: "https://www.google.com", data: "Testing data" }
-        //     ).then((d) => { 
-        //         console.log("Data fetched", d);
-        //         responses = d;
-        //         done();
-        //     }).catch((e) => { console.log(e.toString()); setTimeout(() => { process.exit(e); }, 5000) })
-        // });
-
-        it('[Test A] Test for ', function (done) {
-            // expect(Array.isArray(responses.messageData)).to.equal(true);
+    it('[Test A] Test for process function demos', function (done) {
+        var responses;
+        _concurrencyProcesses(
+            path.join("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.process.js"),
+            { url: "https://www.google.com", data: "Testing data" }
+        ).then((d) => { 
+            console.log("Data fetched", d);
+            responses = d;
             done();
-        });
-
+        }).catch((e) => { console.log(e.toString()); setTimeout(() => { process.exit(e); }, 5000) })
+        // expect(Array.isArray(responses.messageData)).to.equal(true);
+        done();
     });
+
 });
+
 
