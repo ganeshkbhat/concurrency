@@ -28,20 +28,21 @@ describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js .proc
         _concurrencyProcesses(
             path.join("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.process.js"),
             { url: "https://www.google.com", data: "Testing data" }
-        ).then((d) => { 
+        ).then((d) => {
             console.log("Data fetched", d);
+            expect(d).to.equal(true);
             responses = d;
+            expect(responses).to.equal(true);
             done();
-        }).catch((e) => { 
-            console.log(e.toString()); 
+        }).catch((e) => {
+            console.log(e.toString());
+            expect(d).to.equal(true);
             setTimeout(() => {
-                process.exit(e); 
-            }, 5000) 
+                process.exit(e);
+            }, 5000)
         })
         // expect(Array.isArray(responses.messageData)).to.equal(true);
         done();
     });
 
 });
-
-

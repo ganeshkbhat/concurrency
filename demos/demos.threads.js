@@ -21,7 +21,13 @@ let { _concurrencyThreads } = require("../index.js");
 // _concurrencyThreads(path.join("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.threads.js"), { data: { url: "https://www.google.com", message: "Testing data" } });
 
 
-_concurrencyThreads(__filename, { url: "https://www.google.com", data: "Testing data", childData: "Testing child data" }, true).then((d) => console.log(JSON.stringify(d)))
+_concurrencyThreads(__filename, {
+    data: {
+        url: "https://www.google.com",
+        message: "Testing data"
+    },
+    childData: "Testing child data"
+}, true).then((d) => console.log(JSON.stringify(d)))
 // .catch((e) => { console.log(e.toString()); setTimeout(() => {process.exit(e);}, 5000) })
 
 // setTimeout(() => {

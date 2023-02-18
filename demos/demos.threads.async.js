@@ -3,18 +3,17 @@
 const path = require("path");
 let { _concurrencyThreadsAsync } = require("../index.js");
 
-let threads = _concurrencyThreadsAsync("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\demos\\demos.threads.js", {
+let filename = "C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\demos\\demos.threads.js";
+
+let threads = _concurrencyThreadsAsync(filename, {
     data: {
-        data: "Testing parent data",
+        message: "Testing parent data",
         url: "https://www.google.com"
-    }, childData: "Test data from child"
+    },
+    childData: "Test data from child"
 });
 
-console.log(`
-STDOUT:
-console.log(threads.stderr);
-console.log(threads.stdout);
-`);
+console.log(` STDOUT: console.log(threads.stderr); console.log(threads.stdout); `);
 
 console.log(threads.stderr);
 console.log(threads.stdout);

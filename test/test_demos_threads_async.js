@@ -26,16 +26,40 @@ describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js .thre
         var responses;
         let threads = _concurrencyThreadsAsync("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\demos\\demos.threads.js", {
             data: {
-                data: "Testing parent data",
+                message: "Testing parent data",
                 url: "https://www.google.com"
             }, childData: "Test data from child"
         });
 
         /** 
-            {"message":[{"pid":3764,"message":"\"Hello from child. - Thread: 3764","threadId":1},{"closeChild":true,"pid":3764,"childMessageData":[{"pid":3764,"message":"Hello, world! - Server: 3764"},{"closeChild":true}],"result":[],"threadId":1}],"result":[]} 
+            {
+                "message":[
+                    {"pid":3764,"message":"\"Hello from child. - Thread: 3764","threadId":1},
+                    {"closeChild":true,"pid":3764,
+                        "childMessageData":[
+                            {"pid":3764,"message":"Hello, world! - Server: 3764"},
+                            {"closeChild":true}
+                        ],
+                        "result":[],
+                        "threadId":1
+                    }
+                ],
+                "result":[]
+            }
         */
 
-        expect(threads).to.equal({ "message": [{ "pid": 3764, "message": "\"Hello from child. - Thread: 3764", "threadId": 1 }, { "closeChild": true, "pid": 3764, "childMessageData": [{ "pid": 3764, "message": "Hello, world! - Server: 3764" }, { "closeChild": true }], "result": [], "threadId": 1 }], "result": [] });
+        expect(threads).to.equal({
+            "message": [
+                { "pid": 3764, "message": "\"Hello from child. - Thread: 3764", "threadId": 1 },
+                {
+                    "closeChild": true, "pid": 3764, "childMessageData": [
+                        { "pid": 3764, "message": "Hello, world! - Server: 3764" },
+                        { "closeChild": true }
+                    ],
+                    "result": [],
+                    "threadId": 1
+                }], "result": []
+        });
         done();
     });
 });

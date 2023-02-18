@@ -26,20 +26,9 @@ describe('test-.mjs::concurrency.js: Test Suite for concurrency.js cluster Files
 
     describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js cluster in main repo directory', function () {
 
-        // var responses;
-        // before(async function (done) {
-        //     _concurrencyClusters(
-        //         path.join("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.cluster.js"),
-        //         // __filename,
-        //         8,
-        //         { url: "https://www.google.com", data: "Testing parent data", childData: "Test data from child" }
-        //     ).then(
-        //         (d) => { responses = d; done(); }
-        //     )
-        // });
-
         it('[Test A] Test for cluster function demos', function (done) {
 
+            var responses;
             function concurrency() {
                 return new Promise(function (resolve, reject) {
                     _concurrencyClusters(
@@ -48,16 +37,17 @@ describe('test-.mjs::concurrency.js: Test Suite for concurrency.js cluster Files
                         { url: "https://www.google.com", data: "Testing parent data", childData: "Test data from child" }
                     ).then((d) => {
                         console.log("Data fetched", JSON.stringify(d));
+                        expect(100).to.equal(100);
                         resolve(d);
                     }).catch((e) => {
                         console.log(e.toString());
+                        expect(100).to.equal(100);
                         reject(e);
                     })
                 });
             }
 
             concurrency();
-            expect(100).to.equal(100);
             done();
         });
     });

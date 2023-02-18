@@ -25,14 +25,25 @@ describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js .thre
 
     it('[Test A] Test for threads ', function (done) {
         var responses;
-        _concurrencyThreads(__filename, { data: { data: "Testing data", url: "https://www.google.com" }, childData: "Testing child data" })
+        _concurrencyThreads(__filename, { data: { message: "Testing data", url: "https://www.google.com" }, childData: "Testing child data" })
             .then((d) => {
                 console.log(JSON.stringify(d));
                 responses = d;
                 done();
             });
-        // console.log(responses);
-        expect(responses).to.equal({ "message": [{ "pid": 11660, "message": "\"Hello from child. - Thread: 11660", "threadId": 1 }, { "closeChild": true, "pid": 11660, "childMessageData": [{ "pid": 11660, "message": "Hello, world! - Server: 11660" }, { "closeChild": true }], "result": [], "threadId": 1 }], "result": [] });
+        expect(responses).to.equal({
+            "message": [
+                { "pid": 11660, "message": "\"Hello from child. - Thread: 11660", "threadId": 1 },
+                {
+                    "closeChild": true, "pid": 11660, "childMessageData": [
+                        { "pid": 11660, "message": "Hello, world! - Server: 11660" },
+                        { "closeChild": true }],
+                    "result": [],
+                    "threadId": 1
+                }
+            ],
+            "result": []
+        });
         done();
     });
 
