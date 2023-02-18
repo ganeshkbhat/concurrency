@@ -179,4 +179,4 @@ function _concurrencyThreads(filename = __filename, options = {}, greet = false)
     });
 }
 
-module.exports._concurrencyThreads = _concurrencyThreads
+module.exports._concurrencyThreads = _concurrencyThreads;

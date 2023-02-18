@@ -119,4 +119,4 @@ if (process.env.FORK) {
 }
 
 
-module.exports._concurrencyClusters = _concurrencyClusters
+module.exports._concurrencyClusters = _concurrencyClusters;
