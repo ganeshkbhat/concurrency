@@ -16,6 +16,6 @@
 'use strict';
 
 
-let { _concurrencyThreads, _concurrencyProcesses, _concurrencyClusters } = require("../index.js");
-console.log(_concurrencyThreads, _concurrencyProcesses, _concurrencyClusters);
+let { _concurrencyThreads, _concurrencyProcesses, _concurrencyClusters, _concurrencyThreadsAsync } = require("../index.js");
+console.log(_concurrencyThreads, _concurrencyProcesses, _concurrencyClusters, _concurrencyThreadsAsync);
 

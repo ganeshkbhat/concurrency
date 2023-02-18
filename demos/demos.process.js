@@ -19,12 +19,18 @@
 const path = require("path");
 let { _concurrencyProcesses } = require("../index.js");
 
-
+let filename = "C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.process.js";
 _concurrencyProcesses(
-    path.join("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.process.js"), {
-    data: { message: "Testing data", url: "https://www.google.com" }
-}, true).then((d) => { console.log("Data fetched: ", JSON.stringify(d)); })
-    .catch((e) => { console.log(e.toString()); setTimeout(() => { process.exit(e); }, 5000) })
+    path.join(filename), {
+    data: {
+        message: "Testing data",
+        url: "https://www.google.com"
+    }
+}, true).then((d) => {
+    console.log("Data fetched: ", JSON.stringify(d));
+}).catch((e) => {
+    console.log(e.toString()); setTimeout(() => { process.exit(e); }, 5000)
+});
 
 setTimeout(() => console.log(`demo.processes.js: Run file PID ${process.pid}: Interval 2: 10000 `, process.pid), 10000);
 setTimeout(() => console.log(`demo.processes.js: Closing process ${process.pid}: Timeout 1: 10000 `, process.exit()), 20000);
