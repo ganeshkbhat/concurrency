@@ -32,15 +32,17 @@ describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js .thre
             },
             childData: "Testing child data"
         }).then((d) => {
-                console.log(JSON.stringify(d));
-                responses = d;
-                done();
-            });
+            console.log(JSON.stringify(d));
+            responses = d;
+            done();
+        });
         expect(responses).to.equal({
             "message": [
                 { "pid": 11660, "message": "\"Hello from child. - Thread: 11660", "threadId": 1 },
                 {
-                    "closeChild": true, "pid": 11660, "childMessageData": [
+                    "closeChild": true,
+                    "pid": 11660,
+                    "childMessageData": [
                         { "pid": 11660, "message": "Hello, world! - Server: 11660" },
                         { "closeChild": true }],
                     "result": [],

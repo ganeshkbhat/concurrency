@@ -52,13 +52,15 @@ describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js .thre
             "message": [
                 { "pid": 3764, "message": "\"Hello from child. - Thread: 3764", "threadId": 1 },
                 {
-                    "closeChild": true, "pid": 3764, "childMessageData": [
+                    "closeChild": true, "pid": 3764,
+                    "childMessageData": [
                         { "pid": 3764, "message": "Hello, world! - Server: 3764" },
                         { "closeChild": true }
                     ],
                     "result": [],
                     "threadId": 1
-                }], "result": []
+                }],
+            "result": []
         });
         done();
     });
