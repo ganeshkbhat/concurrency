@@ -77,7 +77,7 @@ _concurrencyThreads(
 
 ```
 
-#### Thread Async Command Methods
+#### Thread Async Methods
 
 ```
 
