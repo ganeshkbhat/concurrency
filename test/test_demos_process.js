@@ -25,9 +25,14 @@ describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js .proc
 
     it('[Test A] Test for process function demos', function (done) {
         var responses;
-        _concurrencyProcesses(
-            path.join("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.process.js"),
-            { url: "https://www.google.com", data: "Testing data" }
+        let filename = "C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.process.js";
+        _concurrencyProcesses(path.join(filename),
+            {
+                data: {
+                    url: "https://www.google.com",
+                    message: "Testing data"
+                }
+            }
         ).then((d) => {
             console.log("Data fetched", d);
             expect(d).to.equal(true);

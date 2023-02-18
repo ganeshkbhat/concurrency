@@ -28,10 +28,16 @@ describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js clust
         var responses;
         function concurrency() {
             return new Promise(function (resolve, reject) {
+                let filename = "C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.cluster.js";
                 _concurrencyClusters(
-                    path.join("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.cluster.js"),
-                    8,
-                    { url: "https://www.google.com", data: "Testing parent data", childData: "Test data from child" }
+                    path.join(filename), 8,
+                    {
+                        data: {
+                            message: "Testing parent data",
+                            url: "https://www.google.com",
+                        },
+                        childData: "Test data from child"
+                    }
                 ).then((d) => {
                     console.log("Data fetched", JSON.stringify(d));
                     expect(100).to.equal(100);
@@ -43,8 +49,8 @@ describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js clust
                 })
             });
         }
-
         concurrency();
         done();
     });
+
 });
