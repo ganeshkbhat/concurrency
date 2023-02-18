@@ -20,19 +20,6 @@ const fs = require("fs");
 const { sign } = require("crypto");
 
 
-/**
- *
- *
- * @param {*} module_name
- * @return {*} 
- */
-function _getRequireOrImport(module_name) {
-    if (process.versions.node.split('.')[0] > "14") {
-        return import(module_name);
-    }
-    return require(module_name);
-}
-
 function _concurrencyProcesses(filename = __filename, options = {}, greet = false) {
     var messageData = [], childMessageData = [], result = [];
     if (!options.handlers) {

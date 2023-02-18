@@ -6,6 +6,9 @@ Find the demos in the [demos folder](./demos)
 
 #### Cluster Methods
 
+
+`_concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false)`
+
 ```
 
 const path = require("path");
@@ -38,6 +41,9 @@ concurrency();
 
 #### Process Methods
 
+
+`_concurrencyProcesses(filename = __filename, options = {}, greet = false)`
+
 ```
 
 const path = require("path");
@@ -59,6 +65,9 @@ _concurrencyProcesses(
 
 #### Threads Methods
 
+
+`_concurrencyThreads(filename = __filename, options = {}, greet = false)`
+
 ```
 
 const path = require("path");
@@ -78,6 +87,10 @@ _concurrencyThreads(
 ```
 
 #### Thread Async Methods
+
+
+`_concurrencyThreadsAsync(command, options)`
+
 
 ```
 
