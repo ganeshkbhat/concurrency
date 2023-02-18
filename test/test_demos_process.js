@@ -23,8 +23,6 @@ const { _concurrencyProcesses } = require("../index.js");
 
 describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js .process in main repo directory', function () {
 
-    
-
     it('[Test A] Test for process function demos', function (done) {
         var responses;
         _concurrencyProcesses(
@@ -34,7 +32,12 @@ describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js .proc
             console.log("Data fetched", d);
             responses = d;
             done();
-        }).catch((e) => { console.log(e.toString()); setTimeout(() => { process.exit(e); }, 5000) })
+        }).catch((e) => { 
+            console.log(e.toString()); 
+            setTimeout(() => {
+                process.exit(e); 
+            }, 5000) 
+        })
         // expect(Array.isArray(responses.messageData)).to.equal(true);
         done();
     });
