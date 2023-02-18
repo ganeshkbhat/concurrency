@@ -4,7 +4,7 @@ const { resolve } = require("path");
 const path = require("path");
 let { _concurrencyThreadsAsync } = require("../index.js");
 
-let threads = _concurrencyThreadsAsync("node C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\demos\\demos.threads.js", {
+let threads = _concurrencyThreadsAsync("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\demos\\demos.threads.js", {
     data: {
         data: "Testing parent data",
         url: "https://www.google.com"

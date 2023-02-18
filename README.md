@@ -5,7 +5,16 @@ npm module to work with concurrency - worker threads and worker processes easily
 Find the demos in the [demos folder](./demos)
 
 
-#### INDEVELOPMENT - DO NOT INSTALL
+#### Cluster Methods
+
+
+#### Process Methods
+
+
+#### Threads Methods
+
+
+#### Thread Async Command Methods
 
 
 

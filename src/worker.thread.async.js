@@ -60,7 +60,7 @@ function _concurrencyThreadsAsync(command, options) {
 
     try {
         error = null
-        stdout = cp.execSync(command, options)
+        stdout = cp.execSync("node " + command, options)
         stderr = ''
         code = 0
         ok = true

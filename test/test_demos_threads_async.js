@@ -24,7 +24,7 @@ describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js .thre
 
     it('[Test A] Test for ', function (done) {
         var responses;
-        let threads = _concurrencyThreadsAsync("node C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\demos\\demos.threads.js", {
+        let threads = _concurrencyThreadsAsync("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\demos\\demos.threads.js", {
             data: {
                 data: "Testing parent data",
                 url: "https://www.google.com"
