@@ -51,7 +51,7 @@ function _concurrencyClusters(filename = __filename, num = cpus().length, option
                         cluster.workers[id].disconnect();
                     }
                     if (!Object.keys(cluster.workers).length) {
-                        resolve({ messageData: messageData, result: result });
+                        resolve({ message: messageData, result: result });
                     }
                 });
 
