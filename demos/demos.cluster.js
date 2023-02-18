@@ -38,11 +38,18 @@ let { _concurrencyClusters } = require("../index.js");
 // }
 
 function concurrency() {
+    let filename = "C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.cluster.js";
     return new Promise(function (resolve, reject) {
         _concurrencyClusters(
-            path.join("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.cluster.js"),
+            path.join(filename),
             8,
-            { url: "https://www.google.com", data: "Testing parent data", childData: "Test data from child" }
+            {
+                data: {
+                    message: "Testing parent data",
+                    url: "https://www.google.com",
+                },
+                childData: "Test data from child"
+            }
         ).then((d) => {
             console.log("Data fetched", JSON.stringify(d));
             resolve(d);
