@@ -25,8 +25,13 @@ describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js .thre
 
     it('[Test A] Test for threads ', function (done) {
         var responses;
-        _concurrencyThreads(__filename, { data: { message: "Testing data", url: "https://www.google.com" }, childData: "Testing child data" })
-            .then((d) => {
+        _concurrencyThreads(__filename, {
+            data: {
+                message: "Testing data",
+                url: "https://www.google.com"
+            },
+            childData: "Testing child data"
+        }).then((d) => {
                 console.log(JSON.stringify(d));
                 responses = d;
                 done();
