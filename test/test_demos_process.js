@@ -23,31 +23,27 @@
 
 // describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js .process in main repo directory', function () {
 
-//     it('[Test A] Test for process function demos', function (done) {
+//     it('[Test A] Test for process function demos', async function (done) {
 //         var responses;
 //         let filename = "C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.process.js";
-//         _concurrencyProcesses(path.join(filename),
-//             {
-//                 data: {
-//                     url: "https://www.google.com",
-//                     message: "Testing data"
-//                 }
-//             }
-//         ).then((d) => {
-//             console.log("Data fetched", d);
-//             expect(d).to.equal(true);
-//             responses = d;
-//             expect(responses).to.equal(true);
-//             done();
-//         }).catch((e) => {
-//             console.log(e.toString());
-//             expect(d).to.equal(true);
-//             setTimeout(() => {
-//                 process.exit(e);
-//             }, 5000)
-//         })
-//         // expect(Array.isArray(responses.messageData)).to.equal(true);
-//         done();
+//         responses = await _concurrencyProcesses(path.join(filename), { data: { url: "https://www.google.com", message: "Testing data" } });
+
+//         // console.log(responses.message);
+//         // console.log(responses.result);
+//         // console.log(responses.message[0].childMessageData);
+//         // console.log(responses.message[0].childMessageData[0]);
+//         // console.log(responses.message[0].childMessageData[0].message);
+//         // console.log(responses.message[0].childMessageData[0].message.url);
+//         // console.log(responses.message[0].childMessageData[0].message.message);
+//         // console.log(responses.message[0].childMessageData[0].pid);
+//         // console.log(responses.message[0].childMessageData[1].closeChild);
+//         // console.log(responses.message[0].pid);
+//         // console.log(responses.message[0].closeChild);
+//         // console.log(responses.message[0].result);
+
+//         expect(true).to.equal(true);
+//         // done();
+//         // process.exit();
 //     });
 
 // });
