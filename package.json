@@ -28,6 +28,11 @@
   "scripts": {
     "test": "mocha --reporter spec --recursive --timeout 60000"
   },
+  "keys": [
+    "concurrency",
+    "threads",
+    "processes"
+  ],
   "author": "Ganesh B",
   "license": "MIT"
 }
