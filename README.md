@@ -66,6 +66,9 @@ _concurrencyProcesses(
 ```
 
 
+![Process Execution Functions](./image/Concurrency.js.Process.jpg)
+
+
 #### Threads Methods
 
 
@@ -88,6 +91,9 @@ _concurrencyThreads(
 ).then((d) => console.log(JSON.stringify(d)));
 
 ```
+
+
+![Threads Execution Functions](./image/Concurrency.js.Threads.jpg)
 
 
 #### Thread Async Methods
