@@ -66,7 +66,7 @@ _concurrencyProcesses(
 ```
 
 
-![Process Execution Functions](./image/Concurrency.js.Process.jpg)
+![Process Execution Functions](./docs/Concurrency.js.Process.jpg)
 
 
 #### Threads Methods
@@ -93,7 +93,7 @@ _concurrencyThreads(
 ```
 
 
-![Threads Execution Functions](./image/Concurrency.js.Threads.jpg)
+![Threads Execution Functions](./docs/Concurrency.js.Threads.jpg)
 
 
 #### Thread Async Methods
