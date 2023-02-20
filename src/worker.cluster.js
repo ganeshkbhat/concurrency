@@ -84,7 +84,7 @@ function _concurrencyClusters(filename = __filename, num = cpus().length, option
                         result.push({ return: cbFunction(code), id: id, pid: process.pid, event: "exit" });
                     }
                     if (!Object.keys(cluster.workers).length) {
-                        console.log("exit called");
+                        // console.log("exit called");
                     }
                 });
 
