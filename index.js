@@ -27,9 +27,19 @@ module.exports._concurrencyProcesses = _concurrencyProcesses;
 module.exports._concurrencyClusters = _concurrencyClusters;
 module.exports._concurrencyThreadsAsync = _concurrencyThreadsAsync;
 
+module.exports.concurrencyThreads = _concurrencyThreads;
+module.exports.concurrencyProcesses = _concurrencyProcesses;
+module.exports.concurrencyClusters = _concurrencyClusters;
+module.exports.concurrencyThreadsAsync = _concurrencyThreadsAsync;
+
 module.exports.default = {
     _concurrencyThreads,
     _concurrencyProcesses,
     _concurrencyClusters,
-    _concurrencyThreadsAsync
+    _concurrencyThreadsAsync,
+
+    concurrencyThreads,
+    concurrencyProcesses,
+    concurrencyClusters,
+    concurrencyThreadsAsync
 };
