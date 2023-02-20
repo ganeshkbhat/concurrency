@@ -4,6 +4,7 @@ npm module to work with concurrency - worker threads and worker processes easily
 
 Find the demos in the [demos folder](./demos)
 
+
 #### Cluster Methods
 
 
@@ -39,6 +40,7 @@ concurrency();
 
 ```
 
+
 #### Process Methods
 
 
@@ -63,6 +65,7 @@ _concurrencyProcesses(
 
 ```
 
+
 #### Threads Methods
 
 
@@ -85,6 +88,7 @@ _concurrencyThreads(
 ).then((d) => console.log(JSON.stringify(d)));
 
 ```
+
 
 #### Thread Async Methods
 
@@ -110,10 +114,18 @@ let threads = _concurrencyThreadsAsync(
 
 ```
 
+
 ### Contributions
 
 Contributions, Feature Improvements, Bugs, and Issues are invited. [raising an issue](https://github.com/ganeshkbhat/concurrency.js/issues)
 
+
+### TODO
+
+[TODO](./todo)
+
+
 # License
 
 [MIT License](./LICENSE)
+
