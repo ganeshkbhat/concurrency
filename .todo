@@ -1,0 +1,11 @@
+[TODO]
+
+[*] Easy Threading functionality
+[*] Easy Process functionality
+[*] Easy Threading Async functionality
+[*] Easy Cluster (Processess) functionality
+[*] Add Cluster numbers to Concurrency Threading
+[] Add thread numbers to Concurrency Threading. Create different function
+[] Add Process numbers to Concurrency Threading. Create different function
+[] Add Thread Async numbers to Concurrency Async Threading. Create different function
+
