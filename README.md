@@ -10,6 +10,7 @@ Find the demos in the [demos folder](./demos)
 
 `_concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false)`
 
+
 ```
 
 const path = require("path");
@@ -41,10 +42,24 @@ concurrency();
 ```
 
 
+```
+// Any data type you wish to handle
+options.data = {} 
+
+options.handlers = {
+    message: () => {},
+    error: () => {},
+    exit: () => {},
+    close: () => {}
+}
+```
+
+
 #### Process Methods
 
 
 `_concurrencyProcesses(filename = __filename, options = {}, greet = false)`
+
 
 ```
 
@@ -66,6 +81,19 @@ _concurrencyProcesses(
 ```
 
 
+```
+// Any data type you wish to handle
+options.data = {} 
+
+options.handlers = {
+    message: () => {},
+    error: () => {},
+    close: () => {},
+    childExit: () => {}
+}
+```
+
+
 ![Process Execution Functions](./docs/Concurrency.js.Process.jpg)
 
 
@@ -73,6 +101,7 @@ _concurrencyProcesses(
 
 
 `_concurrencyThreads(filename = __filename, options = {}, greet = false)`
+
 
 ```
 
@@ -90,6 +119,20 @@ _concurrencyThreads(
     true
 ).then((d) => console.log(JSON.stringify(d)));
 
+```
+
+
+```
+// Any data type you wish to handle
+options.data = {} 
+
+options.handlers = {
+    message: () => {},
+    error: () => {},
+    exit: () => {},
+    close: () => {},
+    childExit: () => {}
+}
 ```
 
 
@@ -119,7 +162,6 @@ let threads = _concurrencyThreadsAsync(
 );
 
 ```
-
 
 
 ### Contributions
