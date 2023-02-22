@@ -44,6 +44,7 @@ concurrency();
 
 ```
 // Any data type you wish to handle
+
 options.data = {} 
 
 // All event handlers.
@@ -51,6 +52,7 @@ options.data = {}
 // [TODO consider parent child event handler names.
 // Consider name all child thread, process, cluster process to be named as <childEVENT>.
 // Example: childClose, childMessage
+
 options.handlers = {
     message: () => {},
     error: () => {},
@@ -88,6 +90,7 @@ _concurrencyProcesses(
 
 ```
 // Any data type you wish to handle
+
 options.data = {} 
 
 // All event handlers.
@@ -95,6 +98,7 @@ options.data = {}
 // [TODO consider parent child event handler names.
 // Consider name all child thread, process, cluster process to be named as <childEVENT>.
 // Example: childClose, childMessage
+
 options.handlers = {
     message: () => {},
     error: () => {},
@@ -134,6 +138,7 @@ _concurrencyThreads(
 
 ```
 // Any data type you wish to handle
+
 options.data = {} 
 
 // All event handlers.
@@ -141,6 +146,7 @@ options.data = {}
 // [TODO consider parent child event handler names.
 // Consider name all child thread, process, cluster process to be named as <childEVENT>.
 // Example: childClose, childMessage
+
 options.handlers = {
     message: () => {},
     error: () => {},
