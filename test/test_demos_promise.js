@@ -29,9 +29,7 @@ describe('test-.js::concurrency.js: [Test A] Test Suite for a simple promise', f
             });
         }
         result = await testPromise();
-        console.log(result);
         expect(result.msg).to.equal("testing");
-        // done();
     });
     
 });
