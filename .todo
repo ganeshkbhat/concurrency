@@ -6,7 +6,7 @@
 [*] Easy Cluster (Processess) functionality
 [*] Add Cluster numbers to Concurrency Threading
 [*] Add Demos for all functions
-[] Add Tests for all functions
+[*] Add Tests for all functions
 [] Add thread numbers to Concurrency Threading. Create different function
 [] Add Process numbers to Concurrency Threading. Create different function
 [] Add Thread Async numbers to Concurrency Async Threading. Create different function
