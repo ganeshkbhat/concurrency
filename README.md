@@ -49,7 +49,7 @@ options.data = {}
 
 // All event handlers.
 // The name of the key will be the exact event name in lowercase
-// [TODO consider parent child event handler names.
+// [TODO] consider parent child event handler names.
 // Consider name all child thread, process, cluster process to be named as <childEVENT>.
 // Example: childClose, childMessage
 
@@ -95,7 +95,7 @@ options.data = {}
 
 // All event handlers.
 // The name of the key will be the exact event name in lowercase
-// [TODO consider parent child event handler names.
+// [TODO] consider parent child event handler names.
 // Consider name all child thread, process, cluster process to be named as <childEVENT>.
 // Example: childClose, childMessage
 
@@ -143,7 +143,7 @@ options.data = {}
 
 // All event handlers.
 // The name of the key will be the exact event name in lowercase
-// [TODO consider parent child event handler names.
+// [TODO] consider parent child event handler names.
 // Consider name all child thread, process, cluster process to be named as <childEVENT>.
 // Example: childClose, childMessage
 
