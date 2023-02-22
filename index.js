@@ -38,8 +38,9 @@ module.exports.default = {
     _concurrencyClusters,
     _concurrencyThreadsAsync,
 
-    concurrencyThreads,
-    concurrencyProcesses,
-    concurrencyClusters,
-    concurrencyThreadsAsync
+    concurrencyThreads: _concurrencyThreads,
+    concurrencyProcesses: _concurrencyProcesses,
+    concurrencyClusters: _concurrencyClusters,
+    concurrencyThreadsAsync: _concurrencyThreadsAsync
+    
 };

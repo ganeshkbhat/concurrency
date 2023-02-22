@@ -18,5 +18,5 @@ console.log(` STDOUT: console.log(threads.stderr); console.log(threads.stdout); 
 console.log(threads.stderr);
 console.log(threads.stdout);
 
-// setTimeout(() => console.log(`demo.cluster.js: run file PID ${process.pid}: Interval 2: 10000 `, process.pid), 10000);
-// setTimeout(() => console.log(`demo.cluster.js: Closing process ${process.pid}: Timeout 1: 10000 `, process.exit()), 20000);
+setTimeout(() => console.log(`demo.threads.async.js: run file PID ${process.pid}: Interval 2: 10000 `, process.pid), 10000);
+setTimeout(() => console.log(`demo.threads.async.js: Closing process ${process.pid}: Timeout 1: 10000 `, process.exit()), 20000);

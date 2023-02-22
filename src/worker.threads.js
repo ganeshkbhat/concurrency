@@ -18,8 +18,6 @@
 const path = require('path');
 const fs = require('fs');
 
-
-
 function _concurrencyThreads(filename = __filename, options = {}, greet = false) {
     const { Worker, isMainThread, parentPort } = require('worker_threads');
 
@@ -73,7 +71,7 @@ function _concurrencyThreads(filename = __filename, options = {}, greet = false)
                     const cbFunction = require(options.handlers.error);
                     result.push({ message: cbFunction(e), pid: process.pid, event: "error" });
                 }
-                reject(e)
+                reject({ e, result });
             });
 
             worker.on("messageerror", (e) => {
@@ -81,7 +79,7 @@ function _concurrencyThreads(filename = __filename, options = {}, greet = false)
                     const cbFunction = require(options.handlers.messageerror);
                     result.push({ message: cbFunction(e), pid: process.pid, event: "messageerror" });
                 }
-                reject(e)
+                reject({ e, result });
             });
 
             worker.on("close", (e) => {
@@ -91,7 +89,7 @@ function _concurrencyThreads(filename = __filename, options = {}, greet = false)
                     const cbFunction = require(options.handlers.close);
                     result.push({ message: cbFunction(e), pid: process.pid, event: "close" });
                 }
-                // resolve({ messageData, result });
+                reject({ e, result });
             });
 
             worker.on("exit", (code) => {
@@ -105,6 +103,7 @@ function _concurrencyThreads(filename = __filename, options = {}, greet = false)
                 }
                 // reject(new Error(`Worker (PID ${process.pid}) threadID:${worker.threadId} stopped with exit code ${code}`));
             });
+
             worker.postMessage({ closeChild: true });
             // });
 
