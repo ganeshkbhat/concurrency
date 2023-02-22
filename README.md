@@ -46,6 +46,8 @@ concurrency();
 // Any data type you wish to handle
 options.data = {} 
 
+// All event handlers.
+// The name of the key will be the exact event name in lowercase
 options.handlers = {
     message: () => {},
     error: () => {},
@@ -85,6 +87,8 @@ _concurrencyProcesses(
 // Any data type you wish to handle
 options.data = {} 
 
+// All event handlers.
+// The name of the key will be the exact event name in lowercase
 options.handlers = {
     message: () => {},
     error: () => {},
@@ -126,6 +130,8 @@ _concurrencyThreads(
 // Any data type you wish to handle
 options.data = {} 
 
+// All event handlers.
+// The name of the key will be the exact event name in lowercase
 options.handlers = {
     message: () => {},
     error: () => {},
