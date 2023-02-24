@@ -28,7 +28,7 @@ _concurrencyThreads(__filename, {
     },
     childData: "Testing child data"
 }, true).then((d) => console.log(JSON.stringify(d)))
-// .catch((e) => { console.log(e.toString()); setTimeout(() => {process.exit(e);}, 5000) })
+    .catch((e) => { console.log("Error ", JSON.stringify(e)); setTimeout(() => { process.exit(e); }, 5000) })
 
 // setTimeout(() => {
 //     console.log(`demo.threads.js: Closing process ${process.pid}: Timeout 1: 20000 `, __filename);

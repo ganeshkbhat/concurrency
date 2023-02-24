@@ -42,7 +42,7 @@ function _concurrencyClusters(filename = __filename, num = cpus().length, option
                     if (!messageData[id]) {
                         messageData[id] = [];
                     }
-                    
+
                     messageData[id].push(msg);
 
                     if (!!options.handlers?.message) {
@@ -130,15 +130,15 @@ function _concurrencyClusters(filename = __filename, num = cpus().length, option
             });
 
             if (!!greet) {
-                process.send({ pid: process.pid, message: "Message from worker: " + process.pid.toString(), event: "childSend" });
+                process.send({ pid: process.pid, message: "Message from worker: " + process.pid.toString(), event: "greet" });
             }
 
-            // if (!!process.env.handlers?.childSend) {
-            //     let sendCBFunction = (typeof process.env.handlers?.childMessage === "function") ? process.env.handlers?.childMessage : require(process.env.handlers?.childMessage);
-            //     (!!process.env.childData) ? child.send({ pid: process.pid, message: sendCBFunction(process.env.childData), event: "childSend" }) : null;
-            // } else {
-            //     (!!process.env.childData) ? child.send({ pid: process.pid, message: process.env.childData, event: "childSend" }) : null;
-            // }
+            if (!!process.env.handlers?.childSend) {
+                let sendCBFunction = (typeof process.env.handlers?.childMessage === "function") ? process.env.handlers?.childMessage : require(process.env.handlers?.childMessage);
+                (!!process.env.childData) ? child.send({ pid: process.pid, message: sendCBFunction(process.env.childData), event: "childSend" }) : null;
+            } else {
+                (!!process.env.childData) ? child.send({ pid: process.pid, message: process.env.childData, event: "childSend" }) : null;
+            }
 
         }
     });
