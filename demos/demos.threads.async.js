@@ -3,7 +3,7 @@
 const path = require("path");
 let { _concurrencyThreadsAsync } = require("../index.js");
 
-let filename = "C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\demos\\demos.threads.js";
+let filename = path.join(process.cwd(), "demos\\demos.threads.js");
 
 let threads = _concurrencyThreadsAsync(filename, {
     data: {

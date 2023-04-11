@@ -19,7 +19,7 @@
 const path = require("path");
 let { _concurrencyProcesses } = require("../index.js");
 
-let filename = "C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.process.js";
+let filename = path.join(process.cwd(), "src\\worker.process.js");
 _concurrencyProcesses(
     path.join(filename), {
     data: {

@@ -19,6 +19,7 @@
 const expect = require('chai').expect;
 const path = require("path");
 const { _concurrencyProcesses } = require("../index.js");
+const { json } = require('stream/consumers');
 
 
 describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js .process in main repo directory', function () {
@@ -38,15 +39,15 @@ describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js .proc
         // "result": [] 
         // }
         //
-
+        
         expect(!!responses.message).to.equal(true);
         expect(responses.message.length).to.equal(1);
         expect(!!responses.result).to.equal(true);
         expect(responses.message[0].childMessageData.length).to.equal(3);
         expect(!!responses.message[0].result).to.equal(true);
-        expect(Object.keys(responses.message[0].childMessageData[0]).length).to.equal(2);
+        expect(Object.keys(responses.message[0].childMessageData[0]).length).to.equal(3);
         expect(Object.keys(responses.message[0].childMessageData[1]).length).to.equal(2);
-        expect(Object.keys(responses.message[0].childMessageData[2]).length).to.equal(1);
+        expect(Object.keys(responses.message[0].childMessageData[2]).length).to.equal(3);
         expect(!!responses.message[0].closeChild).to.equal(true);
     });
 

@@ -163,7 +163,7 @@ options.handlers = {
 #### Thread Async Methods
 
 
-`_concurrencyThreadsAsync(command, options)`
+`_concurrencyThreadsAsync(command, options, nodeCmd = true)`
 
 
 ```

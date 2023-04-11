@@ -23,7 +23,7 @@ async function concurrency() {
     var responses;
     async function testPromise() {
         try {
-            let filename = "C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.process.js";
+            let filename = path.join(process.cwd(), "src\\worker.process.js");
             responses = await _concurrencyProcesses(
                 path.join(filename), {
                 data: {
