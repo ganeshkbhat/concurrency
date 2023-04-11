@@ -5,13 +5,13 @@ let { _concurrencyThreadsAsync } = require("../index.js");
 
 let filename = path.join(process.cwd(), "demos\\demos.threads.js");
 
-let threads = _concurrencyThreadsAsync("node " + filename, {
+let threads = _concurrencyThreadsAsync(filename, {
     data: {
         message: "Testing parent data",
         url: "https://www.google.com"
     },
     childData: "Test data from child"
-});
+}, true);
 
 console.log(` STDOUT: console.log(threads.stderr); console.log(threads.stdout); `);
 

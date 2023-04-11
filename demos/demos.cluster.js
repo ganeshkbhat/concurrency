@@ -38,7 +38,7 @@ let { _concurrencyClusters } = require("../index.js");
 // }
 
 function concurrency() {
-    let filename = "C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.cluster.js";
+    let filename = path.join(process.cwd(), "src\\worker.cluster.js");
     return new Promise(function (resolve, reject) {
         _concurrencyClusters(
             path.join(filename),

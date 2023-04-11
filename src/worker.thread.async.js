@@ -53,7 +53,7 @@ function normaliseOptions(options) {
     return options;
 }
 
-function _concurrencyThreadsAsync(command, options, nodeCmd) {
+function _concurrencyThreadsAsync(command, options, nodeCmd = true) {
 
     options = normaliseOptions(options);
     var error, stdout, stderr, code, ok;
@@ -71,7 +71,7 @@ function _concurrencyThreadsAsync(command, options, nodeCmd) {
         code = e.status || /* istanbul ignore next */ 1
         ok = false
     }
-
+    
     return {
         error: error,
         stdout: stdout,

@@ -23,18 +23,18 @@ var spawn = require("child_process").spawn;
 const { _concurrencyThreadsAsync } = require("../index.js");
 
 
-// describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js .threads.async in main repo directory', function () {
+describe('test-.js::concurrency.js: [Test A] Test Suite for concurrency.js .threads.async in main repo directory', function () {
 
-//   it('[Test A] Test for threads _concurrencyThreads', async function () {
-//     let responses = await require("./demos.threads.async").concurrency;
+  it('[Test A] Test for threads _concurrencyThreads', async function () {
+    let responses = await require("./demos.threads.async").concurrency;
     
-//     expect(Object.keys(responses).length).to.equal(5);
-//     expect(responses.message.length).to.equal(1);
-//     // expect(Object.keys(responses.message[0]).length).to.equal(2);
-//     expect(Object.keys(responses.message[0]).length).to.equal(5);
-//   });
+    expect(Object.keys(responses)?.length).to.equal(5);
+    expect(responses?.message?.length).to.equal(1);
+    // expect(Object.keys(responses?.message[0])?.length).to.equal(2);
+    expect(Object.keys(responses?.message[0])?.length).to.equal(5);
+  });
 
-// });
+});
 
 
 //         /** 

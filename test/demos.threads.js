@@ -31,9 +31,10 @@ async function concurrency() {
                     url: "https://www.google.com"
                 },
                 childData: "Testing child data"
-            });
+            }, true);
             return responses;
         } catch (e) {
+            console.log(e);
             return e;
         }
     };

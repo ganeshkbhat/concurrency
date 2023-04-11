@@ -4,7 +4,7 @@ const { _concurrencyClusters } = require("../index.js");
 
 
 async function cluster() {
-    let filename = "C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.cluster.js";
+    let filename = path.join(process.cwd(), "\\src\\worker.cluster.js");
     return _concurrencyClusters(
         path.join(filename),
         // __filename,
