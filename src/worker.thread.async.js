@@ -53,14 +53,14 @@ function normaliseOptions(options) {
     return options;
 }
 
-function _concurrencyThreadsAsync(command, options) {
+function _concurrencyThreadsAsync(command, options, nodeCmd) {
 
     options = normaliseOptions(options);
     var error, stdout, stderr, code, ok;
 
     try {
         error = null
-        stdout = cp.execSync("node " + command, options)
+        stdout = cp.execSync((!!nodeCmd) ? "node " + command : command, options)
         stderr = ''
         code = 0
         ok = true
