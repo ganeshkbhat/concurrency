@@ -34,5 +34,8 @@
     "processes"
   ],
   "author": "Ganesh B",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "loadbalancerjs": "^0.0.1"
+  }
 }
