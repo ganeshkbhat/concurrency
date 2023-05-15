@@ -5,7 +5,7 @@
  * Description: npm module to work with concurrency - worker threads and worker processes easily using simple functions and script files
  * Install: npm i concurrency.js --save
  * Github: https://github.com/ganeshkbhat/concurrency
- * npmjs Link: https://www.npmjs.com/package/
+ * npmjs Link: https://www.npmjs.com/package/concurrency.js
  * File: index.mjs
  * File Description: 
  * 
@@ -23,7 +23,10 @@ import {
     concurrencyThreads,
     concurrencyProcesses,
     concurrencyClusters,
-    concurrencyThreadsAsync
+    concurrencyThreadsAsync,
+
+    loadbalancer, serverutils, algorithms,
+    sockets, certificates, loadbalancerjs
 } from "./index.js";
 
 export {
@@ -34,6 +37,9 @@ export {
     concurrencyThreads,
     concurrencyProcesses,
     concurrencyClusters,
-    concurrencyThreadsAsync
+    concurrencyThreadsAsync,
+
+    loadbalancer, serverutils, algorithms,
+    sockets, certificates, loadbalancerjs
 };
 export default _concurrencyProcesses;

@@ -6,7 +6,7 @@
  * Install: npm i concurrency.js --save
  * Github: https://github.com/ganeshkbhat/concurrency
  * npmjs Link: https://www.npmjs.com/package/concurrency.js
- * File: demos.js
+ * File: worker.process.js
  * File Description: 
  * 
 */
@@ -15,7 +15,6 @@
 
 'use strict';
 
+const loadbalancerjs = require("loadbalancerjs");
 
-let { _concurrencyThreads, _concurrencyProcesses, _concurrencyClusters, _concurrencyThreadsAsync } = require("../index.js");
-console.log(_concurrencyThreads, _concurrencyProcesses, _concurrencyClusters, _concurrencyThreadsAsync);
-
+module.exports.loadbalancer = loadbalancerjs;
