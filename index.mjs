@@ -24,6 +24,7 @@ import {
     concurrencyProcesses,
     concurrencyClusters,
     concurrencyThreadsAsync,
+    concurrencyMultipleThreads,
 
     loadbalancer, serverutils, algorithms,
     sockets, certificates, loadbalancerjs
@@ -34,10 +35,13 @@ export {
     _concurrencyProcesses,
     _concurrencyClusters,
     _concurrencyThreadsAsync,
+    _concurrencyMultipleThreads,
+
     concurrencyThreads,
     concurrencyProcesses,
     concurrencyClusters,
     concurrencyThreadsAsync,
+    concurrencyMultipleThreads,
 
     loadbalancer, serverutils, algorithms,
     sockets, certificates, loadbalancerjs

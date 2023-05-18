@@ -134,9 +134,15 @@ function _concurrencyProcesses(filename = __filename, options = {}, greet = fals
             }
 
             (!!options.data) ? child.send({ pid: process.pid, message: options.data }) : null;
+
+            if (!!options.handlers.childExecute) {
+                options.handlers.childExecute();
+            }
+
             if (!!close) {
                 child.send({ pid: process.pid, closeChild: true, event: "closeChild" });
             }
+
         });
     }
 }

@@ -29,7 +29,7 @@ _concurrencyProcesses(
 }, true).then((d) => {
     console.log("Data fetched: ", JSON.stringify(d));
 }).catch((e) => {
-    console.log(e.toString()); setTimeout(() => { process.exit(e); }, 5000)
+    console.log(e.toString());  /* setTimeout(() => { process.exit(e); }, 5000) */
 });
 
 setTimeout(() => console.log(`demo.processes.js: Run file PID ${process.pid}: Interval 2: 10000 `, process.pid), 10000);

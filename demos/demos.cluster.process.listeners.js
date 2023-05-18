@@ -19,40 +19,6 @@ const path = require("path");
 let { _concurrencyClusters } = require("../index.js");
 
 
-// console.log(_concurrencyClusters(
-//     path.join("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.process.js"),
-//     8,
-//     { url: "https://www.google.com", data: "Testing parent data", childData: "Test data from child" }
-// ).then((d) => {
-//     console.log("Data fetched", JSON.stringify(d));
-// }).catch((e) => {
-//     console.log(e.toString());
-// }))
-
-
-// async function concurrency() {
-//     let result = await _concurrencyClusters(
-//         path.join("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.cluster.js"),
-//         8,
-//         { url: "https://www.google.com", data: "Testing parent data", childData: "Test data from child" }
-//     )
-//     console.log(result);
-// }
-
-
-// function concurrency() {
-//     _concurrencyClusters(
-//         path.join("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.cluster.js"),
-//         8,
-//         { url: "https://www.google.com", data: "Testing parent data", childData: "Test data from child" }
-//     ).then((d) => {
-//         console.log("Data fetched", JSON.stringify(d));
-//     }).catch((e) => {
-//         console.log(e.toString());
-//     })
-// }
-
-
 function concurrency() {
     let filename = path.join(process.cwd(), "src\\worker.cluster.js");
     return new Promise(function (resolve, reject) {

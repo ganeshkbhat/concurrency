@@ -16,11 +16,11 @@
 'use strict';
 
 
-function runFunctionInWorkerThreads(func, argsArray) {
+function runFunctionInWorkerThreads(filename, func, argsArray) {
     const promises = [];
 
     for (let i = 0; i < argsArray.length; i++) {
-        const worker = new Worker('worker.js');
+        const worker = new Worker(filename);
 
         const promise = new Promise((resolve) => {
             worker.onmessage = (event) => {
