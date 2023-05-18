@@ -140,6 +140,10 @@ function _concurrencyClusters(filename = __filename, num = cpus().length, option
                 (!!process.env.childData) ? child.send({ pid: process.pid, message: process.env.childData, event: "childSend" }) : null;
             }
 
+            if (!!options.handlers.childExecute) {
+                options.handlers.childExecute();
+            }
+
         }
     });
 

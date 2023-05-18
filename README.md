@@ -4,12 +4,11 @@ npm module to work with concurrency - worker threads and worker processes easily
 
 Find the demos in the [demos folder](./demos)
 
-
 #### Cluster Methods
 
+Create a cluster of nodejs processes using a filname to fork
 
 `_concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false)`
-
 
 ```
 
@@ -41,11 +40,10 @@ concurrency();
 
 ```
 
-
 ```
 // Any data type you wish to handle
 
-options.data = {} 
+options.data = {}
 
 // All event handlers.
 // The name of the key will be the exact event name in lowercase
@@ -61,12 +59,58 @@ options.handlers = {
 }
 ```
 
+#### Loadbalancer Methods
+
+Create a loadbalancer with cluster for a http server using the load balancer method for http or http/s methods
+
+
+```
+'use strict';
+
+var loadbalancer = require("loadbalancer").loadbalancer;
+var httpSocketServer = require("../index").sockets.httpSocketServer;
+var server = require("./express-app");
+
+loadbalancer.loadbalancer({
+    "server": server,
+    "protocol": "http", // https
+    "createCerts": true,
+    "host": "localhost",
+    "proxy": {
+        "proxy": true,
+        "protocol": "http",
+        "host": "localhost",
+        "port": 7000,
+        "proxyHost": "",
+        "proxyPort": 9000
+    },
+    "certs": {
+        "key": "./certs/ssl.key",
+        "cert": "./certs/ssl.cert"
+    },
+    "port": 8000,
+    "ws": true,
+    "processes": 5,
+    "threads": 10,
+    "mainProcessCallback": () => { },
+    "forkCallback": (opts, pr) => {
+        // console.log(opts, pr);
+        // console.log(opts);
+        httpSocketServer(opts);
+    },
+    "callbacks": {
+        "wsOnData": null,
+        "wsOnEnd": null,
+        "wsUpgrade": null,
+        "server": null,
+        "listen": null
+    }
+})
+```
 
 #### Process Methods
 
-
 `_concurrencyProcesses(filename = __filename, options = {}, greet = false)`
-
 
 ```
 
@@ -87,11 +131,10 @@ _concurrencyProcesses(
 
 ```
 
-
 ```
 // Any data type you wish to handle
 
-options.data = {} 
+options.data = {}
 
 // All event handlers.
 // The name of the key will be the exact event name in lowercase
@@ -107,15 +150,11 @@ options.handlers = {
 }
 ```
 
-
 ![Process Execution Functions](./docs/Concurrency.js.Process.jpg)
-
 
 #### Threads Methods
 
-
 `_concurrencyThreads(filename = __filename, options = {}, greet = false)`
-
 
 ```
 
@@ -135,11 +174,10 @@ _concurrencyThreads(
 
 ```
 
-
 ```
 // Any data type you wish to handle
 
-options.data = {} 
+options.data = {}
 
 // All event handlers.
 // The name of the key will be the exact event name in lowercase
@@ -152,19 +190,15 @@ options.handlers = {
     error: () => {},
     exit: () => {},
     close: () => {},
-    childExit: () => {} // exception for child process exit event naming 
+    childExit: () => {} // exception for child process exit event naming
 }
 ```
 
-
 ![Threads Execution Functions](./docs/Concurrency.js.Threads.jpg)
-
 
 #### Thread Async Methods
 
-
 `_concurrencyThreadsAsync(command, options, nodeCmd = true)`
-
 
 ```
 
@@ -184,20 +218,14 @@ let threads = _concurrencyThreadsAsync(
 
 ```
 
-
 ### Contributions
 
 Contributions, Feature Improvements, Bugs, and Issues are invited. [raising an issue](https://github.com/ganeshkbhat/concurrency.js/issues)
-
-
 
 ### TODO
 
 [Todo](./todo)
 
-
-
 # License
 
 [MIT License](./LICENSE)
-

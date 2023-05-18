@@ -22,7 +22,7 @@ const { sign } = require("crypto");
 
 function _concurrencyProcesses(filename = __filename, options = {}, greet = false, close = true) {
     var messageData = [], childMessageData = [], result = [];
-    
+
     if (!options.handlers) {
         options["handlers"] = {};
     }
