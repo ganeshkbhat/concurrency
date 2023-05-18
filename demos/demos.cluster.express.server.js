@@ -85,6 +85,6 @@ function concurrency() {
 concurrency().then((b) => { console.log(b) }).catch((c) => { console.log(c); });
 
 
-setTimeout(() => console.log(`demo.cluster.js: Ran cluster file process PID ${process.pid}: Interval 2: 10000 `, process.pid), 10000);
-setTimeout(() => console.log(`demo.cluster.js: Closing cluster file process ${process.pid}: Timeout 1: 10000 `, process.exit()), 20000);
+// setTimeout(() => console.log(`demo.cluster.js: Ran cluster file process PID ${process.pid}: Interval 2: 10000 `, process.pid), 10000);
+// setTimeout(() => console.log(`demo.cluster.js: Closing cluster file process ${process.pid}: Timeout 1: 10000 `, process.exit()), 20000);
 
