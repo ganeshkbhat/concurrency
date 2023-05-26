@@ -205,8 +205,8 @@ function _concurrencyThreads(filename = __filename, options = {}, greet = false,
                 parentPort.postMessage({ pid: process.pid, message: `"Hello from child. - Thread: ${process.pid}`, event: "greet" });
             }
 
-            if (!!options.handlers.childExecute) {
-                options.handlers.childExecute();
+            if (!!options.handlers.childThreadExecute) {
+                options.handlers.childThreadExecute();
             }
         }
     });
