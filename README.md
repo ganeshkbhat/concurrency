@@ -2,6 +2,7 @@
 
 npm module to work with concurrency - worker threads and worker processes easily using simple functions and script files
 
+<br/>
 
 # Installation
 
@@ -10,10 +11,9 @@ npm module to work with concurrency - worker threads and worker processes easily
 npm install concurrency.js --save
 ```
 
-<br/>
-
 Find the demos in the [demos folder](./demos)
 
+<br/>
 
 ## CONCURRENCY METHODS
 
