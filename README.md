@@ -4,7 +4,36 @@ npm module to work with concurrency - worker threads and worker processes easily
 
 Find the demos in the [demos folder](./demos)
 
-#### Cluster Methods
+
+## CONCURRENCY METHODS
+
+
+`_concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false)`
+
+`_concurrencyProcesses(filename = __filename, options = {}, greet = false)`
+
+`_concurrencyThreads(filename = __filename, options = {}, greet = false)`
+
+`_concurrencyThreadsAsync(command, options, nodeCmd = true)`
+
+`_concurrencyThreadsAsync(command, options, nodeCmd = true)`
+
+`loadbalancer(serverOptions)`
+
+`processing(serverOptions)`
+
+`processingMultiple(serverOptions)`
+
+`clustering(serverOptions)`
+
+`threading(serverOptions)`
+
+`threadingMultiple(serverOptions)`
+
+
+
+## Cluster Methods
+
 
 Create a cluster of nodejs processes using a filname to fork
 
@@ -59,7 +88,9 @@ options.handlers = {
 }
 ```
 
-#### Process Methods
+
+## Process Methods
+
 
 `_concurrencyProcesses(filename = __filename, options = {}, greet = false)`
 
@@ -103,7 +134,9 @@ options.handlers = {
 
 ![Process Execution Functions](./docs/Concurrency.js.Process.jpg)
 
-#### Threads Methods
+
+## Threads Methods
+
 
 `_concurrencyThreads(filename = __filename, options = {}, greet = false)`
 
@@ -147,7 +180,7 @@ options.handlers = {
 
 ![Threads Execution Functions](./docs/Concurrency.js.Threads.jpg)
 
-#### Thread Async Methods
+## Thread Async Methods
 
 `_concurrencyThreadsAsync(command, options, nodeCmd = true)`
 
@@ -170,7 +203,7 @@ let threads = _concurrencyThreadsAsync(
 ```
 
 
-#### Loadbalancer Methods
+## Loadbalancer Methods
 
 Create loadbalancer threads.
 
