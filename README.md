@@ -15,36 +15,37 @@ Find the demos in the [demos folder](./demos)
 
 ## CONCURRENCY METHODS
 
-`concurrency._concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false)` [deprecated in v0.0.5 in favour of clusters]
+`concurrency._concurrencyClusters(filename: <string>, num: <int>, options: <Object>, greet: <boolean>)` [deprecated in v0.0.5 in favour of clusters]
 
-`concurrency.clusters(filename = __filename, num = cpus().length, options = {}, greet = false)`
+`concurrency.clusters(filename: <string>, num: <int>, options: <Object>, greet: <boolean>)`
 
-`concurrency._concurrencyProcesses(filename = __filename, options = {}, greet = false)` [deprecated in v0.0.5 in favour of processes]
+`concurrency._concurrencyProcesses(filename: <string>, options: <Object>, greet: <boolean>)` [deprecated in v0.0.5 in favour of processes]
 
-`concurrency.processes(filename = __filename, options = {}, greet = false)`
+`concurrency.processes(filename: <string>, options: <Object>, greet: <boolean>)`
 
-`concurrency._concurrencyThreads(filename = __filename, options = {}, greet = false)` [deprecated in v0.0.5 in favour of threads]
+`concurrency._concurrencyThreads(filename: <string>, options: <Object>, greet: <boolean>)` [deprecated in v0.0.5 in favour of threads]
 
-`concurrency.threads(filename = __filename, options = {}, greet = false)`
+`concurrency.threads(filename: <string>, options: <Object>, greet: <boolean>)`
 
-`concurrency._concurrencyThreadsAsync(command, options, nodeCmd = true)` [deprecated in v0.0.5 in favour of threadsAsync]
+`concurrency._concurrencyThreadsAsync(command: <string>, options: <Object>, nodeCmd: <boolean>)` [deprecated in v0.0.5 in favour of threadsAsync]
 
-`concurrency.threadsAsync(command, options, nodeCmd = true)`
+`concurrency.threadsAsync(command: <string>, options: <Object>, nodeCmd: <boolean>)`
 
 
 
-`loadbalancer.loadbalancer(serverOptions)`
+`loadbalancer.loadbalancer(serverOptions: <Object>)`
 
-`loadbalancer.processing(serverOptions)`
+`loadbalancer.processing(serverOptions: <Object>)`
 
-`loadbalancer.processingMultiple(serverOptions)`
+`loadbalancer.processingMultiple(serverOptions: <Object>)`
 
-`loadbalancer.clustering(serverOptions)`
+`loadbalancer.clustering(serverOptions: <Object>)`
 
-`loadbalancer.threading(serverOptions)`
+`loadbalancer.threading(serverOptions: <Object>)`
 
-`loadbalancer.threadingMultiple(serverOptions)`
+`loadbalancer.threadingMultiple(serverOptions: <Object>)`
 
+<br/>
 
 ## Cluster and Process Methods
 
