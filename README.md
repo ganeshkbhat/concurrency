@@ -49,29 +49,28 @@ Find the demos in the [demos folder](./demos)
 
 Create a cluster of nodejs processes using a filename to fork
 
-`_concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false)`
+`._concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false)`
 
 ```
 
 const path = require("path");
-let { _concurrencyClusters } = require("concurrency.js");
+let { clusters } = require("concurrency.js");
 
 function concurrency() {
     return new Promise(function (resolve, reject) {
-        _concurrencyClusters(
-            path.join("C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.cluster.js"),
-            8,
-            {
+        clusters(path.join("node_module\\concurrency.js\\src\\worker.cluster.js"), 8, {
                 data: {
                     data: "Testing parent data",
                     url: "https://www.google.com"
                 },
                 childData: "Test data from child"
             }
-        ).then((d) => {
+        )
+        .then((d) => {
             console.log("Data fetched", JSON.stringify(d));
             resolve(d);
-        }).catch((e) => {
+        })
+        .catch((e) => {
             console.log(e.toString());
             reject(e);
         });
@@ -80,6 +79,11 @@ function concurrency() {
 concurrency();
 
 ```
+
+```
+_concurrencyClusters(path.join("node_module\\concurrency.js\\src\\worker.cluster.js"), 8, {...}, false)
+```
+
 
 ```
 // Any data type you wish to handle
@@ -101,28 +105,29 @@ options.handlers = {
 ```
 
 
+
 ## Process Methods
 
 
-`_concurrencyProcesses(filename = __filename, options = {}, greet = false)`
+`._concurrencyProcesses(filename = __filename, options = {}, greet = false)`
 
 ```
 
 const path = require("path");
-let { _concurrencyProcesses } = require("concurrency.js");
-_concurrencyProcesses(
-    path.join(
-    "C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\src\\worker.process.js"),
-    {
+let { processes } = require("concurrency.js");
+processes(path.join("node_module\\concurrency.js\\src\\worker.process.js"), {
         data: {
             message: "Testing data",
             url: "https://www.google.com"
         }
-    },
-    true
-    ).then((d) => { console.log("Data fetched: ", JSON.stringify(d)); })
+    }, true)
+    .then((d) => { console.log("Data fetched: ", JSON.stringify(d)); })
     .catch((e) => { console.log(e.toString()); setTimeout(() => { process.exit(e); }, 5000) })
 
+```
+
+```
+_concurrencyProcesses(path.join("node_module\\concurrency.js\\src\\worker.process.js"), 8, {...}, false)
 ```
 
 ```
@@ -151,28 +156,30 @@ options.handlers = {
 ![Threads Execution Functions](./docs/Concurrency.js.Threads.jpg)
 
 
+
 ## Threads Methods
 
 
 
-`_concurrencyThreads(filename = __filename, options = {}, greet = false)`
+`._concurrencyThreads(filename = __filename, options = {}, greet = false)`
 
 ```
 
 const path = require("path");
-let { _concurrencyThreads } = require("concurrency.js");
-_concurrencyThreads(
-    __filename,
-    {
+let { threads } = require("concurrency.js");
+threads(__filename, {
         data: {
             url: "https://www.google.com",
             data: "Testing data"
         },
         childData: "Testing child data"
-    },
-    true
-).then((d) => console.log(JSON.stringify(d)));
+    }, true)
+    .then((d) => console.log(JSON.stringify(d)));
 
+```
+
+```
+_concurrencyThreads(path.join(__filename), 8, {...}, false)
 ```
 
 ```
@@ -196,19 +203,16 @@ options.handlers = {
 ```
 
 
-
 ## Thread Async Methods
 
-`_concurrencyThreadsAsync(command, options, nodeCmd = true)`
+`._concurrencyThreadsAsync(command, options, nodeCmd = true)`
 
 ```
 
 const path = require("path");
-let { _concurrencyThreadsAsync } = require("concurrency.js");
+let {  } = require("concurrency.js");
 
-let threads = _concurrencyThreadsAsync(
-    "C:\\Users\\GB\\Documents\\projects\\requireurl\\concurrency\\demos\\demos.threads.js",
-    {
+let threads = threadsAsync("node_module\\concurrency.js\\src\\demos\\demos.threads.js", {
         data: {
             data: "Testing parent data",
             url: "https://www.google.com"
@@ -219,66 +223,217 @@ let threads = _concurrencyThreadsAsync(
 
 ```
 
+```
+_concurrencyThreadsAsync("node_module\\concurrency.js\\src\\demos\\demos.threads.js", {...}, true)
+```
+
 
 ## Loadbalancer Methods (Multi - Threading or Multi - Processing Methods)
+
+`.threading`, `threadingMultiple`, `.threadPool`, `.processing`, `.processingMultiple`, `.clustering`
+
 
 
 ## Loadbalancer Threading Methods
 
-Create loadbalancer threads.
+`.threading` Create loadbalancer threads.
 
 
 ```
 'use strict';
 
-var loadbalancer = require("loadbalancer").loadbalancer;
-var httpSocketServer = require("../index").sockets.httpSocketServer;
+var threading = require("loadbalancerjs").threading;
+var httpSocketServer = require("loadbalancerjs").sockets.httpSocketServer;
 var server = require("./express-app");
+
+threading({
+    "server": server,
+    "protocol": "http",
+    "createCerts": true,
+    "host": "localhost",
+    "proxy": {
+        "proxy": true,
+        "protocol": "http",
+        "host": "localhost",
+        "port": 7000,
+        "proxyHost": "",
+        "proxyPort": 9000
+    },
+    "certs": {
+        "key": "./certs/ssl.key",
+        "cert": "./certs/ssl.cert"
+    },
+    "port": 8000,
+    "ws": true,
+    "processes": 5,
+    "threads": 10,
+    "mainProcessCallback": () => { },
+    "forkCallback": (opts, pr) => {
+        // console.log(opts, pr);
+        // console.log(opts);
+        httpSocketServer(opts);
+    },
+    "callbacks": {
+        "wsOnData": null,
+        "wsOnEnd": null,
+        "wsUpgrade": null,
+        "server": null,
+        "listen": null
+    }
+})
 
 ```
 
 
 ## Loadbalancer Multi Threading Methods
 
-Create loadbalancer threads.
+`.threadingMultiple` Create loadbalancer threads multiple.
 
 
 ```
 'use strict';
 
-var loadbalancer = require("loadbalancer").loadbalancer;
-var httpSocketServer = require("../index").sockets.httpSocketServer;
+var threadingMultiple = require("loadbalancerjs").threadingMultiple;
+var httpSocketServer = require("loadbalancerjs").sockets.httpSocketServer;
 var server = require("./express-app");
+
+threadingMultiple({
+    "server": server,
+    "protocol": "http",
+    "createCerts": true,
+    "host": "localhost",
+    "proxy": {
+        "proxy": true,
+        "protocol": "http",
+        "host": "localhost",
+        "port": 7000,
+        "proxyHost": "",
+        "proxyPort": 9000
+    },
+    "certs": {
+        "key": "./certs/ssl.key",
+        "cert": "./certs/ssl.cert"
+    },
+    "port": 8000,
+    "ws": true,
+    "processes": 5,
+    "threads": 10,
+    "mainProcessCallback": () => { },
+    "forkCallback": (opts, pr) => {
+        // console.log(opts, pr);
+        // console.log(opts);
+        httpSocketServer(opts);
+    },
+    "callbacks": {
+        "wsOnData": null,
+        "wsOnEnd": null,
+        "wsUpgrade": null,
+        "server": null,
+        "listen": null
+    }
+})
 
 ```
 
 
 ## Loadbalancer Processing Methods
 
-Create loadbalancer processing.
+`.processing` Create loadbalancer processing. 
 
 
 ```
 'use strict';
 
-var loadbalancer = require("loadbalancer").loadbalancer;
-var httpSocketServer = require("../index").sockets.httpSocketServer;
+var processing = require("loadbalancerjs").processing;
+var httpSocketServer = require("loadbalancerjs").sockets.httpSocketServer;
 var server = require("./express-app");
+
+processing({
+    "server": server,
+    "protocol": "http",
+    "createCerts": true,
+    "host": "localhost",
+    "proxy": {
+        "proxy": true,
+        "protocol": "http",
+        "host": "localhost",
+        "port": 7000,
+        "proxyHost": "",
+        "proxyPort": 9000
+    },
+    "certs": {
+        "key": "./certs/ssl.key",
+        "cert": "./certs/ssl.cert"
+    },
+    "port": 8000,
+    "ws": true,
+    "processes": 5,
+    "threads": 10,
+    "mainProcessCallback": () => { },
+    "forkCallback": (opts, pr) => {
+        // console.log(opts, pr);
+        // console.log(opts);
+        httpSocketServer(opts);
+    },
+    "callbacks": {
+        "wsOnData": null,
+        "wsOnEnd": null,
+        "wsUpgrade": null,
+        "server": null,
+        "listen": null
+    }
+})
 
 ```
 
 
 ## Loadbalancer Multi Processing Methods
 
-Create loadbalancer multi processing.
+`.processingMultiple` Create loadbalancer multi processing.
 
 
 ```
 'use strict';
 
-var loadbalancer = require("loadbalancer").loadbalancer;
-var httpSocketServer = require("../index").sockets.httpSocketServer;
+var processingMultiple = require("loadbalancerjs").processingMultiple;
+var httpSocketServer = require("loadbalancerjs").sockets.httpSocketServer;
 var server = require("./express-app");
+
+processingMultiple({
+    "server": server,
+    "protocol": "http",
+    "createCerts": true,
+    "host": "localhost",
+    "proxy": {
+        "proxy": true,
+        "protocol": "http",
+        "host": "localhost",
+        "port": 7000,
+        "proxyHost": "",
+        "proxyPort": 9000
+    },
+    "certs": {
+        "key": "./certs/ssl.key",
+        "cert": "./certs/ssl.cert"
+    },
+    "port": 8000,
+    "ws": true,
+    "processes": 5,
+    "threads": 10,
+    "mainProcessCallback": () => { },
+    "forkCallback": (opts, pr) => {
+        // console.log(opts, pr);
+        // console.log(opts);
+        httpSocketServer(opts);
+    },
+    "callbacks": {
+        "wsOnData": null,
+        "wsOnEnd": null,
+        "wsUpgrade": null,
+        "server": null,
+        "listen": null
+    }
+})
 
 ```
 
