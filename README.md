@@ -8,21 +8,23 @@ Find the demos in the [demos folder](./demos)
 ## CONCURRENCY METHODS
 
 
-`concurrency._concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false)`
-
-`concurrency._concurrencyProcesses(filename = __filename, options = {}, greet = false)`
-
-`concurrency._concurrencyThreads(filename = __filename, options = {}, greet = false)`
-
-`concurrency._concurrencyThreadsAsync(command, options, nodeCmd = true)`
+`concurrency._concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false)` [deprecated in v0.0.5 in favour of clusters]
 
 `concurrency.clusters(filename = __filename, num = cpus().length, options = {}, greet = false)`
 
+`concurrency._concurrencyProcesses(filename = __filename, options = {}, greet = false)` [deprecated in v0.0.5 in favour of processes]
+
 `concurrency.processes(filename = __filename, options = {}, greet = false)`
+
+`concurrency._concurrencyThreads(filename = __filename, options = {}, greet = false)` [deprecated in v0.0.5 in favour of threads]
 
 `concurrency.threads(filename = __filename, options = {}, greet = false)`
 
+`concurrency._concurrencyThreadsAsync(command, options, nodeCmd = true)` [deprecated in v0.0.5 in favour of threadsAsync]
+
 `concurrency.threadsAsync(command, options, nodeCmd = true)`
+
+
 
 `loadbalancer.loadbalancer(serverOptions)`
 
@@ -36,6 +38,10 @@ Find the demos in the [demos folder](./demos)
 
 `loadbalancer.threadingMultiple(serverOptions)`
 
+
+## Cluster and Process Methods
+
+![Process Execution Functions](./docs/Concurrency.js.Process.jpg)
 
 
 ## Cluster Methods
@@ -138,10 +144,15 @@ options.handlers = {
 }
 ```
 
-![Process Execution Functions](./docs/Concurrency.js.Process.jpg)
+
+## Threading and Multi-Threading Methods
+
+
+![Threads Execution Functions](./docs/Concurrency.js.Threads.jpg)
 
 
 ## Threads Methods
+
 
 
 `_concurrencyThreads(filename = __filename, options = {}, greet = false)`
@@ -184,7 +195,7 @@ options.handlers = {
 }
 ```
 
-![Threads Execution Functions](./docs/Concurrency.js.Threads.jpg)
+
 
 ## Thread Async Methods
 
@@ -209,7 +220,10 @@ let threads = _concurrencyThreadsAsync(
 ```
 
 
-## Loadbalancer Methods
+## Loadbalancer Methods (Multi - Threading or Multi - Processing Methods)
+
+
+## Loadbalancer Threading Methods
 
 Create loadbalancer threads.
 
@@ -221,42 +235,53 @@ var loadbalancer = require("loadbalancer").loadbalancer;
 var httpSocketServer = require("../index").sockets.httpSocketServer;
 var server = require("./express-app");
 
-loadbalancer.loadbalancer({
-    "server": server,
-    "protocol": "http", // https
-    "createCerts": true,
-    "host": "localhost",
-    "proxy": {
-        "proxy": true,
-        "protocol": "http",
-        "host": "localhost",
-        "port": 7000,
-        "proxyHost": "",
-        "proxyPort": 9000
-    },
-    "certs": {
-        "key": "./certs/ssl.key",
-        "cert": "./certs/ssl.cert"
-    },
-    "port": 8000,
-    "ws": true,
-    "processes": 5,
-    "threads": 10,
-    "mainProcessCallback": () => { },
-    "forkCallback": (opts, pr) => {
-        // console.log(opts, pr);
-        // console.log(opts);
-        httpSocketServer(opts);
-    },
-    "callbacks": {
-        "wsOnData": null,
-        "wsOnEnd": null,
-        "wsUpgrade": null,
-        "server": null,
-        "listen": null
-    }
-})
 ```
+
+
+## Loadbalancer Multi Threading Methods
+
+Create loadbalancer threads.
+
+
+```
+'use strict';
+
+var loadbalancer = require("loadbalancer").loadbalancer;
+var httpSocketServer = require("../index").sockets.httpSocketServer;
+var server = require("./express-app");
+
+```
+
+
+## Loadbalancer Processing Methods
+
+Create loadbalancer processing.
+
+
+```
+'use strict';
+
+var loadbalancer = require("loadbalancer").loadbalancer;
+var httpSocketServer = require("../index").sockets.httpSocketServer;
+var server = require("./express-app");
+
+```
+
+
+## Loadbalancer Multi Processing Methods
+
+Create loadbalancer multi processing.
+
+
+```
+'use strict';
+
+var loadbalancer = require("loadbalancer").loadbalancer;
+var httpSocketServer = require("../index").sockets.httpSocketServer;
+var server = require("./express-app");
+
+```
+
 
 
 ### Contributions
