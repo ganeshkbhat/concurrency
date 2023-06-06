@@ -19,9 +19,9 @@
 let { _concurrencyThreads, _concurrencyProcesses, _concurrencyClusters, _concurrencyThreadsAsync } = require("../index.js");
 let { concurrencyThreads, concurrencyProcesses, concurrencyClusters, concurrencyThreadsAsync } = require("../index.js");
 let { concurrency, loadbalancer } = require("../index.js");
-
+let defaults = require("../index.js").default;
 
 console.log(_concurrencyThreads, _concurrencyProcesses, _concurrencyClusters, _concurrencyThreadsAsync);
 console.log(concurrencyThreads, concurrencyProcesses, concurrencyClusters, concurrencyThreadsAsync);
 console.log(concurrency, loadbalancer);
-
+console.log(defaults);

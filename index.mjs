@@ -63,4 +63,7 @@ export {
     concurrency,
     loadbalancer
 };
-export default concurrencyjs;
+export default {
+    concurrencyjs: concurrencyjs,
+    loadbalancer: loadbalancer.default
+};

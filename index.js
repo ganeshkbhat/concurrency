@@ -21,7 +21,7 @@ const { _concurrencyProcesses } = require("./src/worker.process.js");
 const { _concurrencyClusters } = require("./src/worker.cluster.js");
 const { _concurrencyThreadsAsync } = require("./src/worker.thread.async.js");
 const { _concurrencyMultipleThreads } = require("./src/worker.threads.multiple");
-const loadbalancerjs = require("./src/worker.cluster.loadbalancer.js");
+const loadbalancerjs = require("./src/worker.loadbalancer.js");
 
 module.exports._concurrencyThreads = _concurrencyThreads;
 module.exports._concurrencyProcesses = _concurrencyProcesses;
@@ -33,7 +33,7 @@ module.exports.concurrencyThreads = _concurrencyThreads;
 module.exports.concurrencyProcesses = _concurrencyProcesses;
 module.exports.concurrencyClusters = _concurrencyClusters;
 module.exports.concurrencyThreadsAsync = _concurrencyThreadsAsync;
-
+module.exports.concurrencyMultipleThreads = _concurrencyMultipleThreads;
 
 module.exports.loadbalancer = {
     loadbalancer: loadbalancerjs.loadbalancer,
@@ -74,11 +74,6 @@ module.exports.default = {
         multipleThreads: _concurrencyMultipleThreads,
     },
     loadbalancer: {
-        loadbalancer: loadbalancerjs.loadbalancer,
-        serverutils: loadbalancerjs.serverutils,
-        algorithms: loadbalancerjs.algorithms,
-        sockets: loadbalancerjs.sockets,
-        certificates: loadbalancerjs.certificates,
-        default: loadbalancerjs.default
+        ...loadbalancerjs
     }
 };
