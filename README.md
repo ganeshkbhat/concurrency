@@ -14,11 +14,8 @@ npm install concurrency.js --save
 
 Find the demos in the [demos folder](./demos)
 
-<br/>
 
 ## CONCURRENCY METHODS
-
-<br/>
 
 `concurrency._concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false)` [deprecated in v0.0.5 in favour of clusters]
 
@@ -50,7 +47,6 @@ Find the demos in the [demos folder](./demos)
 
 `loadbalancer.threadingMultiple(serverOptions)`
 
-<br/>
 <br/>
 
 ## Cluster and Process Methods
