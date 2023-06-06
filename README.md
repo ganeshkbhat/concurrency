@@ -6,7 +6,6 @@ npm module to work with concurrency - worker threads and worker processes easily
 
 # Installation
 
-<br/>
 
 ```
 npm install concurrency.js --save
