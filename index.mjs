@@ -27,8 +27,25 @@ import {
     concurrencyMultipleThreads,
 
     loadbalancer, serverutils, algorithms,
-    sockets, certificates, loadbalancerjs
+    sockets, certificates, default as concurrencyjs
 } from "./index.js";
+
+const concurrency = {
+    threads: _concurrencyThreads,
+    processes: _concurrencyProcesses,
+    clusters: _concurrencyClusters,
+    threadsAsync: _concurrencyThreadsAsync,
+    multipleThreads: _concurrencyMultipleThreads,
+};
+
+const loadbalancer = {
+    loadbalancer: loadbalancerjs.loadbalancer,
+    serverutils: loadbalancerjs.serverutils,
+    algorithms: loadbalancerjs.algorithms,
+    sockets: loadbalancerjs.sockets,
+    certificates: loadbalancerjs.certificates,
+    default: loadbalancerjs.default
+};
 
 export {
     _concurrencyThreads,
@@ -43,7 +60,7 @@ export {
     concurrencyThreadsAsync,
     concurrencyMultipleThreads,
 
-    loadbalancer, serverutils, algorithms,
-    sockets, certificates, loadbalancerjs
+    concurrency,
+    loadbalancer
 };
-export default _concurrencyProcesses;
+export default concurrencyjs;

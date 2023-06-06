@@ -35,12 +35,22 @@ module.exports.concurrencyClusters = _concurrencyClusters;
 module.exports.concurrencyThreadsAsync = _concurrencyThreadsAsync;
 
 
-module.exports.loadbalancer = loadbalancerjs.loadbalancer;
-module.exports.serverutils = loadbalancerjs.sertverutils;
-module.exports.algorithms = loadbalancerjs.algorithms;
-module.exports.sockets = loadbalancerjs.sockets;
-module.exports.certificates = loadbalancerjs.certificates;
-module.exports.default = loadbalancerjs.default;
+module.exports.loadbalancer = {
+    loadbalancer: loadbalancerjs.loadbalancer,
+    serverutils: loadbalancerjs.serverutils,
+    algorithms: loadbalancerjs.algorithms,
+    sockets: loadbalancerjs.sockets,
+    certificates: loadbalancerjs.certificates,
+    default: loadbalancerjs.default
+};
+
+module.exports.concurrency = {
+    threads: _concurrencyThreads,
+    processes: _concurrencyProcesses,
+    clusters: _concurrencyClusters,
+    threadsAsync: _concurrencyThreadsAsync,
+    multipleThreads: _concurrencyMultipleThreads,
+}
 
 
 module.exports.default = {
@@ -56,10 +66,19 @@ module.exports.default = {
     concurrencyThreadsAsync: _concurrencyThreadsAsync,
     concurrencyMultipleThreads: _concurrencyMultipleThreads,
 
-    loadbalancer: loadbalancerjs.loadbalancer,
-    serverutils: loadbalancerjs.sertverutils,
-    algorithms: loadbalancerjs.algorithms,
-    sockets: loadbalancerjs.sockets,
-    certificates: loadbalancerjs.certificates,
-    loadbalancerjs: loadbalancerjs.default
+    concurrency: {
+        threads: _concurrencyThreads,
+        processes: _concurrencyProcesses,
+        clusters: _concurrencyClusters,
+        threadsAsync: _concurrencyThreadsAsync,
+        multipleThreads: _concurrencyMultipleThreads,
+    },
+    loadbalancer: {
+        loadbalancer: loadbalancerjs.loadbalancer,
+        serverutils: loadbalancerjs.serverutils,
+        algorithms: loadbalancerjs.algorithms,
+        sockets: loadbalancerjs.sockets,
+        certificates: loadbalancerjs.certificates,
+        default: loadbalancerjs.default
+    }
 };

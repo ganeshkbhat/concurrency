@@ -17,5 +17,11 @@
 
 
 let { _concurrencyThreads, _concurrencyProcesses, _concurrencyClusters, _concurrencyThreadsAsync } = require("../index.js");
+let { concurrencyThreads, concurrencyProcesses, concurrencyClusters, concurrencyThreadsAsync } = require("../index.js");
+let { concurrency, loadbalancer } = require("../index.js");
+
+
 console.log(_concurrencyThreads, _concurrencyProcesses, _concurrencyClusters, _concurrencyThreadsAsync);
+console.log(concurrencyThreads, concurrencyProcesses, concurrencyClusters, concurrencyThreadsAsync);
+console.log(concurrency, loadbalancer);
 

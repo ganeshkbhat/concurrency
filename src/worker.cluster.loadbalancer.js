@@ -17,4 +17,4 @@
 
 const loadbalancerjs = require("loadbalancerjs");
 
-module.exports.loadbalancer = loadbalancerjs;
+module.exports = { ...loadbalancerjs };
