@@ -2,7 +2,6 @@
 
 npm module to work with concurrency - worker threads and worker processes easily using simple functions and script files
 
-<br/>
 
 # Installation
 
@@ -13,7 +12,6 @@ npm install concurrency.js --save
 
 Find the demos in the [demos folder](./demos)
 
-<br/>
 
 ## CONCURRENCY METHODS
 
@@ -47,17 +45,13 @@ Find the demos in the [demos folder](./demos)
 
 `loadbalancer.threadingMultiple(serverOptions)`
 
-<br/>
 
 ## Cluster and Process Methods
 
 ![Process Execution Functions](./docs/Concurrency.js.Process.jpg)
 
-<br/>
-
 ## Cluster Methods
 
-<br/>
 
 `._concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false)`
 
@@ -120,16 +114,12 @@ options.handlers = {
 }
 ```
 
-<br/>
-
 
 ## Process Methods
 
-<br/>
 
 `._concurrencyProcesses(filename = __filename, options = {}, greet = false)`
 
-<br/>
 
 ```
 
@@ -169,23 +159,19 @@ options.handlers = {
 }
 ```
 
-<br/>
 
 ## Threading and Multi-Threading Methods
 
-<br/>
 
 ![Threads Execution Functions](./docs/Concurrency.js.Threads.jpg)
 
-<br/>
 
 ## Threads Methods
 
-<br/>
 
 `._concurrencyThreads(filename = __filename, options = {}, greet = false)`
 
-<br/>
+
 
 ```
 
@@ -226,15 +212,12 @@ options.handlers = {
 }
 ```
 
-<br/>
-
 ## Thread Async Methods
 
-<br/>
 
 `._concurrencyThreadsAsync(command, options, nodeCmd = true)`
 
-<br/>
+
 
 ```
 
@@ -256,11 +239,8 @@ let threads = threadsAsync("node_module\\concurrency.js\\src\\demos\\demos.threa
 _concurrencyThreadsAsync("node_module\\concurrency.js\\src\\demos\\demos.threads.js", {...}, true)
 ```
 
-<br/>
-
 ## Loadbalancer Methods (Multi - Threading or Multi - Processing Methods)
 
-<br/>
 
 `.threading`, `threadingMultiple`, `.threadPool`, `.processing`, `.processingMultiple`, `.clustering`
 
@@ -268,11 +248,9 @@ _concurrencyThreadsAsync("node_module\\concurrency.js\\src\\demos\\demos.threads
 
 ## Loadbalancer Threading Methods
 
-<br/>
 
 `.threading` Create loadbalancer threads.
 
-<br/>
 
 ```
 'use strict';
@@ -319,15 +297,12 @@ threading({
 
 ```
 
-<br/>
 
 ## Loadbalancer Multi Threading Methods
 
-<br/>
 
 `.threadingMultiple` Create loadbalancer threads multiple.
 
-<br/>
 
 ```
 'use strict';
@@ -374,15 +349,12 @@ threadingMultiple({
 
 ```
 
-<br/>
 
 ## Loadbalancer Processing Methods
 
-<br/>
 
 `.processing` Create loadbalancer processing. 
 
-<br/>
 
 ```
 'use strict';
@@ -429,16 +401,12 @@ processing({
 
 ```
 
-<br/>
-
 
 ## Loadbalancer Multi Processing Methods
 
-<br/>
 
 `.processingMultiple` Create loadbalancer multi processing.
 
-<br/>
 
 ```
 'use strict';
@@ -484,8 +452,6 @@ processingMultiple({
 })
 
 ```
-
-<br/>
 
 
 ## Contributions
