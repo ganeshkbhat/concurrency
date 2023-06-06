@@ -8,27 +8,27 @@ Find the demos in the [demos folder](./demos)
 ## CONCURRENCY METHODS
 
 
-`_concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false)`
+`concurrency._concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false)`
 
-`_concurrencyProcesses(filename = __filename, options = {}, greet = false)`
+`concurrency._concurrencyProcesses(filename = __filename, options = {}, greet = false)`
 
-`_concurrencyThreads(filename = __filename, options = {}, greet = false)`
+`concurrency._concurrencyThreads(filename = __filename, options = {}, greet = false)`
 
-`_concurrencyThreadsAsync(command, options, nodeCmd = true)`
+`concurrency._concurrencyThreadsAsync(command, options, nodeCmd = true)`
 
-`_concurrencyThreadsAsync(command, options, nodeCmd = true)`
+`concurrency._concurrencyThreadsAsync(command, options, nodeCmd = true)`
 
-`loadbalancer(serverOptions)`
+`loadbalancer.loadbalancer(serverOptions)`
 
-`processing(serverOptions)`
+`loadbalancer.processing(serverOptions)`
 
-`processingMultiple(serverOptions)`
+`loadbalancer.processingMultiple(serverOptions)`
 
-`clustering(serverOptions)`
+`loadbalancer.clustering(serverOptions)`
 
-`threading(serverOptions)`
+`loadbalancer.threading(serverOptions)`
 
-`threadingMultiple(serverOptions)`
+`loadbalancer.threadingMultiple(serverOptions)`
 
 
 
