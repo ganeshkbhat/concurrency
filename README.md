@@ -16,8 +16,6 @@ Find the demos in the [demos folder](./demos)
 
 `concurrency._concurrencyThreadsAsync(command, options, nodeCmd = true)`
 
-`concurrency._concurrencyThreadsAsync(command, options, nodeCmd = true)`
-
 `loadbalancer.loadbalancer(serverOptions)`
 
 `loadbalancer.processing(serverOptions)`
@@ -35,7 +33,7 @@ Find the demos in the [demos folder](./demos)
 ## Cluster Methods
 
 
-Create a cluster of nodejs processes using a filname to fork
+Create a cluster of nodejs processes using a filename to fork
 
 `_concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false)`
 
