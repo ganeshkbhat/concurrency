@@ -59,55 +59,6 @@ options.handlers = {
 }
 ```
 
-#### Loadbalancer Methods
-
-Create a loadbalancer with cluster for a http server using the load balancer method for http or http/s methods
-
-
-```
-'use strict';
-
-var loadbalancer = require("loadbalancer").loadbalancer;
-var httpSocketServer = require("../index").sockets.httpSocketServer;
-var server = require("./express-app");
-
-loadbalancer.loadbalancer({
-    "server": server,
-    "protocol": "http", // https
-    "createCerts": true,
-    "host": "localhost",
-    "proxy": {
-        "proxy": true,
-        "protocol": "http",
-        "host": "localhost",
-        "port": 7000,
-        "proxyHost": "",
-        "proxyPort": 9000
-    },
-    "certs": {
-        "key": "./certs/ssl.key",
-        "cert": "./certs/ssl.cert"
-    },
-    "port": 8000,
-    "ws": true,
-    "processes": 5,
-    "threads": 10,
-    "mainProcessCallback": () => { },
-    "forkCallback": (opts, pr) => {
-        // console.log(opts, pr);
-        // console.log(opts);
-        httpSocketServer(opts);
-    },
-    "callbacks": {
-        "wsOnData": null,
-        "wsOnEnd": null,
-        "wsUpgrade": null,
-        "server": null,
-        "listen": null
-    }
-})
-```
-
 #### Process Methods
 
 `_concurrencyProcesses(filename = __filename, options = {}, greet = false)`
@@ -217,6 +168,57 @@ let threads = _concurrencyThreadsAsync(
 );
 
 ```
+
+
+#### Loadbalancer Methods
+
+Create loadbalancer threads.
+
+
+```
+'use strict';
+
+var loadbalancer = require("loadbalancer").loadbalancer;
+var httpSocketServer = require("../index").sockets.httpSocketServer;
+var server = require("./express-app");
+
+loadbalancer.loadbalancer({
+    "server": server,
+    "protocol": "http", // https
+    "createCerts": true,
+    "host": "localhost",
+    "proxy": {
+        "proxy": true,
+        "protocol": "http",
+        "host": "localhost",
+        "port": 7000,
+        "proxyHost": "",
+        "proxyPort": 9000
+    },
+    "certs": {
+        "key": "./certs/ssl.key",
+        "cert": "./certs/ssl.cert"
+    },
+    "port": 8000,
+    "ws": true,
+    "processes": 5,
+    "threads": 10,
+    "mainProcessCallback": () => { },
+    "forkCallback": (opts, pr) => {
+        // console.log(opts, pr);
+        // console.log(opts);
+        httpSocketServer(opts);
+    },
+    "callbacks": {
+        "wsOnData": null,
+        "wsOnEnd": null,
+        "wsUpgrade": null,
+        "server": null,
+        "listen": null
+    }
+})
+```
+
 
 ### Contributions
 
