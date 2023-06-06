@@ -16,6 +16,14 @@ Find the demos in the [demos folder](./demos)
 
 `concurrency._concurrencyThreadsAsync(command, options, nodeCmd = true)`
 
+`concurrency.clusters(filename = __filename, num = cpus().length, options = {}, greet = false)`
+
+`concurrency.processes(filename = __filename, options = {}, greet = false)`
+
+`concurrency.threads(filename = __filename, options = {}, greet = false)`
+
+`concurrency.threadsAsync(command, options, nodeCmd = true)`
+
 `loadbalancer.loadbalancer(serverOptions)`
 
 `loadbalancer.processing(serverOptions)`
