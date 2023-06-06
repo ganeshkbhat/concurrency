@@ -458,8 +458,6 @@ processingMultiple({
 
 Contributions, Feature Improvements, Bugs, and Issues are invited. [raising an issue](https://github.com/ganeshkbhat/concurrency.js/issues)
 
-<br/>
-
 ## TODO
 
 [Todo](./todo)
