@@ -15,19 +15,19 @@ Find the demos in the [demos folder](./demos)
 
 ## CONCURRENCY METHODS
 
-`concurrency._concurrencyClusters(filename: <string>, num: <number>, options: <Object>, greet: <boolean>)` [deprecated in v0.0.5 in favour of clusters]
+`concurrency._concurrencyClusters(filename: <string>, num: <number>, options: <Object>, greet: <boolean>)` [deprecated in v0.0.5 in favour of .concurrency.clusters]
 
 `concurrency.clusters(filename: <string>, num: <number>, options: <Object>, greet: <boolean>)`
 
-`concurrency._concurrencyProcesses(filename: <string>, options: <Object>, greet: <boolean>)` [deprecated in v0.0.5 in favour of processes]
+`concurrency._concurrencyProcesses(filename: <string>, options: <Object>, greet: <boolean>)` [deprecated in v0.0.5 in favour of .concurrency.processes or .concurrencyProcesses]
 
 `concurrency.processes(filename: <string>, options: <Object>, greet: <boolean>)`
 
-`concurrency._concurrencyThreads(filename: <string>, options: <Object>, greet: <boolean>)` [deprecated in v0.0.5 in favour of threads]
+`concurrency._concurrencyThreads(filename: <string>, options: <Object>, greet: <boolean>)` [deprecated in v0.0.5 in favour of .concurrency.threads or .concurrencyThreads]
 
 `concurrency.threads(filename: <string>, options: <Object>, greet: <boolean>)`
 
-`concurrency._concurrencyThreadsAsync(command: <string>, options: <Object>, nodeCmd: <boolean>)` [deprecated in v0.0.5 in favour of threadsAsync]
+`concurrency._concurrencyThreadsAsync(command: <string>, options: <Object>, nodeCmd: <boolean>)` [deprecated in v0.0.5 in favour of .concurrency.threadsAsync, .loadbalancer.threadsAsync, or .concurrencyThreadsAsync]
 
 `concurrency.threadsAsync(command: <string>, options: <Object>, nodeCmd: <boolean>)`
 
@@ -62,6 +62,8 @@ Find the demos in the [demos folder](./demos)
 
 #### Example
 
+`.concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false)`
+
 `._concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false)`
 
 
@@ -74,7 +76,7 @@ Create a cluster of nodejs processes using a filename to fork
 ```
 
 const path = require("path");
-let { clusters } = require("concurrency.js");
+let { concurrencyClusters as clusters } = require("concurrency.js");
 
 function concurrency() {
     return new Promise(function (resolve, reject) {
@@ -101,14 +103,10 @@ concurrency();
 ```
 
 
-#### USAGE
-
 ```
-concurrency.concurrencyClusters(filename: <string>, num: <number>, options: <Object>, greet: <boolean>)
+.concurrencyClusters(path.join("node_module\\concurrency.js\\src\\worker.cluster.js"), 8, {...}, false)
 ```
 
-
-#### EXAMPLE
 
 ```
 ._concurrencyClusters(path.join("node_module\\concurrency.js\\src\\worker.cluster.js"), 8, {...}, false)
@@ -145,13 +143,15 @@ options.handlers = {
 
 #### Example
 
+`.concurrencyProcesses(filename = __filename, options = {}, greet = false)`
+
 `._concurrencyProcesses(filename = __filename, options = {}, greet = false)`
 
 
 ```
 
 const path = require("path");
-let { processes } = require("concurrency.js");
+let { concurrencyProcesses as processes } = require("concurrency.js");
 processes(path.join("node_module\\concurrency.js\\src\\worker.process.js"), {
         data: {
             message: "Testing data",
@@ -163,6 +163,10 @@ processes(path.join("node_module\\concurrency.js\\src\\worker.process.js"), {
 
 ```
 
+
+```
+.concurrencyProcesses(path.join("node_module\\concurrency.js\\src\\worker.process.js"), 8, {...}, false)
+```
 
 ```
 ._concurrencyProcesses(path.join("node_module\\concurrency.js\\src\\worker.process.js"), 8, {...}, false)
@@ -199,10 +203,12 @@ options.handlers = {
 
 #### USAGE
 
-`concurrency.threads(filename: <string>, options: <Object>, greet: <boolean>)`
+`concurrency.concurrencyThreads(filename: <string>, options: <Object>, greet: <boolean>)`
 
 
 #### Example
+
+`.concurrencyThreads(filename = __filename, options = {}, greet = false)`
 
 `._concurrencyThreads(filename = __filename, options = {}, greet = false)`
 
@@ -210,7 +216,7 @@ options.handlers = {
 ```
 
 const path = require("path");
-let { threads } = require("concurrency.js");
+let { concurrencyThreads as threads } = require("concurrency.js");
 threads(__filename, {
         data: {
             url: "https://www.google.com",
@@ -231,9 +237,12 @@ threads(__filename, {
 #### Example
 
 ```
-._concurrencyMultipleThreads(path.join(__filename), 8, {...}, false)
+.concurrencyMultipleThreads(path.join(__filename), 8, {...}, false)
 ```
 
+```
+._concurrencyMultipleThreads(path.join(__filename), 8, {...}, false)
+```
 
 ```
 // Any data type you wish to handle
@@ -285,6 +294,10 @@ let threads = threadsAsync("node_module\\concurrency.js\\src\\demos\\demos.threa
     }
 );
 
+```
+
+```
+.concurrencyThreadsAsync("node_module\\concurrency.js\\src\\demos\\demos.threads.js", {...}, true)
 ```
 
 ```
