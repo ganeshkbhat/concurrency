@@ -15,9 +15,9 @@ Find the demos in the [demos folder](./demos)
 
 ## CONCURRENCY METHODS
 
-`concurrency._concurrencyClusters(filename: <string>, num: <int>, options: <Object>, greet: <boolean>)` [deprecated in v0.0.5 in favour of clusters]
+`concurrency._concurrencyClusters(filename: <string>, num: <number>, options: <Object>, greet: <boolean>)` [deprecated in v0.0.5 in favour of clusters]
 
-`concurrency.clusters(filename: <string>, num: <int>, options: <Object>, greet: <boolean>)`
+`concurrency.clusters(filename: <string>, num: <number>, options: <Object>, greet: <boolean>)`
 
 `concurrency._concurrencyProcesses(filename: <string>, options: <Object>, greet: <boolean>)` [deprecated in v0.0.5 in favour of processes]
 
@@ -51,12 +51,13 @@ Find the demos in the [demos folder](./demos)
 
 ![Process Execution Functions](./docs/Concurrency.js.Process.jpg)
 
+
 ## Cluster Methods
 
 
-#### usage
+#### USAGE
 
-`concurrency.concurrencyClusters(filename: <string>, num: <int>, options: <Object>, greet: <boolean>)`
+`concurrency.concurrencyClusters(filename: <string>, num: <number>, options: <Object>, greet: <boolean>)`
 
 
 #### Example
@@ -103,7 +104,7 @@ concurrency();
 #### USAGE
 
 ```
-concurrency.concurrencyClusters(filename: <string>, num: <int>, options: <Object>, greet: <boolean>)
+concurrency.concurrencyClusters(filename: <string>, num: <number>, options: <Object>, greet: <boolean>)
 ```
 
 
@@ -221,9 +222,18 @@ threads(__filename, {
 
 ```
 
+
+#### USAGE
+
+`concurrency.concurrencyMultipleThreads(filename: <string>, num: <number>, options: <Object>, greet: <boolean>)`
+
+
+#### Example
+
 ```
-_concurrencyThreads(path.join(__filename), 8, {...}, false)
+._concurrencyMultipleThreads(path.join(__filename), 8, {...}, false)
 ```
+
 
 ```
 // Any data type you wish to handle
@@ -251,9 +261,12 @@ options.handlers = {
 
 #### USAGE
 
-`concurrency._concurrencyThreadsAsync(command: <string>, options: <Object>, nodeCmd: <boolean>)`
+`concurrency.concurrencyThreadsAsync(command: <string>, options: <Object>, nodeCmd: <boolean>)`
+
 
 #### Example
+
+`.concurrencyThreadsAsync(command, options, nodeCmd = true)`
 
 `._concurrencyThreadsAsync(command, options, nodeCmd = true)`
 
@@ -261,7 +274,7 @@ options.handlers = {
 ```
 
 const path = require("path");
-let {  } = require("concurrency.js");
+let { concurrencyThreadsAsync as threadsAsync } = require("concurrency.js");
 
 let threads = threadsAsync("node_module\\concurrency.js\\src\\demos\\demos.threads.js", {
         data: {
@@ -275,7 +288,7 @@ let threads = threadsAsync("node_module\\concurrency.js\\src\\demos\\demos.threa
 ```
 
 ```
-_concurrencyThreadsAsync("node_module\\concurrency.js\\src\\demos\\demos.threads.js", {...}, true)
+._concurrencyThreadsAsync("node_module\\concurrency.js\\src\\demos\\demos.threads.js", {...}, true)
 ```
 
 
