@@ -54,7 +54,15 @@ Find the demos in the [demos folder](./demos)
 ## Cluster Methods
 
 
+#### usage
+
+`concurrency.concurrencyClusters(filename: <string>, num: <int>, options: <Object>, greet: <boolean>)`
+
+
+#### Example
+
 `._concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false)`
+
 
 <br/>
 
@@ -91,8 +99,18 @@ concurrency();
 
 ```
 
+
+#### USAGE
+
 ```
-_concurrencyClusters(path.join("node_module\\concurrency.js\\src\\worker.cluster.js"), 8, {...}, false)
+concurrency.concurrencyClusters(filename: <string>, num: <int>, options: <Object>, greet: <boolean>)
+```
+
+
+#### EXAMPLE
+
+```
+._concurrencyClusters(path.join("node_module\\concurrency.js\\src\\worker.cluster.js"), 8, {...}, false)
 ```
 
 
@@ -119,6 +137,13 @@ options.handlers = {
 ## Process Methods
 
 
+#### USAGE
+
+`concurrency.concurrencyProcesses(filename: <string>, options: <Object>, greet: <boolean>)`
+
+
+#### Example
+
 `._concurrencyProcesses(filename = __filename, options = {}, greet = false)`
 
 
@@ -137,8 +162,9 @@ processes(path.join("node_module\\concurrency.js\\src\\worker.process.js"), {
 
 ```
 
+
 ```
-_concurrencyProcesses(path.join("node_module\\concurrency.js\\src\\worker.process.js"), 8, {...}, false)
+._concurrencyProcesses(path.join("node_module\\concurrency.js\\src\\worker.process.js"), 8, {...}, false)
 ```
 
 ```
@@ -170,8 +196,14 @@ options.handlers = {
 ## Threads Methods
 
 
-`._concurrencyThreads(filename = __filename, options = {}, greet = false)`
+#### USAGE
 
+`concurrency.threads(filename: <string>, options: <Object>, greet: <boolean>)`
+
+
+#### Example
+
+`._concurrencyThreads(filename = __filename, options = {}, greet = false)`
 
 
 ```
@@ -213,11 +245,17 @@ options.handlers = {
 }
 ```
 
+
 ## Thread Async Methods
 
 
-`._concurrencyThreadsAsync(command, options, nodeCmd = true)`
+#### USAGE
 
+`concurrency._concurrencyThreadsAsync(command: <string>, options: <Object>, nodeCmd: <boolean>)`
+
+#### Example
+
+`._concurrencyThreadsAsync(command, options, nodeCmd = true)`
 
 
 ```
@@ -240,6 +278,7 @@ let threads = threadsAsync("node_module\\concurrency.js\\src\\demos\\demos.threa
 _concurrencyThreadsAsync("node_module\\concurrency.js\\src\\demos\\demos.threads.js", {...}, true)
 ```
 
+
 ## Loadbalancer Methods (Multi - Threading or Multi - Processing Methods)
 
 
@@ -249,6 +288,13 @@ _concurrencyThreadsAsync("node_module\\concurrency.js\\src\\demos\\demos.threads
 
 ## Loadbalancer Threading Methods
 
+
+#### USAGE
+
+`loadbalancer.threading(serverOptions: <Object>)`
+
+
+#### Example
 
 `.threading` Create loadbalancer threads.
 
@@ -302,6 +348,13 @@ threading({
 ## Loadbalancer Multi Threading Methods
 
 
+#### USAGE
+
+`loadbalancer.threadingMultiple(serverOptions: <Object>)`
+
+
+#### Example
+
 `.threadingMultiple` Create loadbalancer threads multiple.
 
 
@@ -354,6 +407,13 @@ threadingMultiple({
 ## Loadbalancer Processing Methods
 
 
+#### USAGE
+
+`loadbalancer.processing(serverOptions: <Object>)`
+
+
+#### Example
+
 `.processing` Create loadbalancer processing. 
 
 
@@ -405,6 +465,13 @@ processing({
 
 ## Loadbalancer Multi Processing Methods
 
+
+#### USAGE
+
+`loadbalancer.processingMultiple(serverOptions: <Object>)`
+
+
+#### Example
 
 `.processingMultiple` Create loadbalancer multi processing.
 
