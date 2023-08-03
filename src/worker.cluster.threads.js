@@ -10,6 +10,8 @@
  * File Description: 
  *
  * [IN PROGRESS]: Raised feature request for Cluster Threads in Node.js
+ *   Clustering of threads, basically similar to clustered thread pools with features same as Cluster module.
+ *   https://github.com/nodejs/node/issues/48350
  * 
 */
 
