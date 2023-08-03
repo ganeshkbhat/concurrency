@@ -15,6 +15,10 @@ Find the demos in the [demos folder](./demos)
 
 ## CONCURRENCY METHODS
 
+
+#### Concurrency Methods/ Objects
+
+
 `concurrency._concurrencyClusters(filename: <string>, num: <number>, options: <Object>, greet: <boolean>)` [deprecated in v0.0.5 in favour of .concurrency.clusters]
 
 `concurrency.clusters(filename: <string>, num: <number>, options: <Object>, greet: <boolean>)`
@@ -32,6 +36,8 @@ Find the demos in the [demos folder](./demos)
 `concurrency.threadsAsync(command: <string>, options: <Object>, nodeCmd: <boolean>)`
 
 
+#### Loadbalancer Methods/ Objects
+
 
 `loadbalancer.loadbalancer(serverOptions: <Object>)`
 
@@ -44,6 +50,7 @@ Find the demos in the [demos folder](./demos)
 `loadbalancer.threading(serverOptions: <Object>)`
 
 `loadbalancer.threadingMultiple(serverOptions: <Object>)`
+
 
 <br/>
 
