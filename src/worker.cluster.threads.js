@@ -8,6 +8,8 @@
  * npmjs Link: https://www.npmjs.com/package/concurrency.js
  * File: worker.cluster.threads.js
  * File Description: 
+ *
+ * [IN PROGRESS]: Raised feature request for Cluster Threads in Node.js
  * 
 */
 
