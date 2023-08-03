@@ -62,9 +62,21 @@ Find the demos in the [demos folder](./demos)
 
 #### Example
 
-`.concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false)`
+```
+.concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false)
+```
 
-`._concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false)`
+```
+._concurrencyClusters(filename = __filename, num = cpus().length, options = {}, greet = false)
+```
+
+```
+.concurrencyClusters(path.join("node_module\\concurrency.js\\src\\worker.cluster.js"), 8, {...}, false)
+```
+
+```
+._concurrencyClusters(path.join("node_module\\concurrency.js\\src\\worker.cluster.js"), 8, {...}, false)
+```
 
 
 <br/>
@@ -104,16 +116,6 @@ concurrency();
 
 
 ```
-.concurrencyClusters(path.join("node_module\\concurrency.js\\src\\worker.cluster.js"), 8, {...}, false)
-```
-
-
-```
-._concurrencyClusters(path.join("node_module\\concurrency.js\\src\\worker.cluster.js"), 8, {...}, false)
-```
-
-
-```
 // Any data type you wish to handle
 
 options.data = {}
@@ -143,10 +145,27 @@ options.handlers = {
 
 #### Example
 
-`.concurrencyProcesses(filename = __filename, options = {}, greet = false)`
+```
+.concurrencyProcesses(filename = __filename, options = {}, greet = false)
+```
 
-`._concurrencyProcesses(filename = __filename, options = {}, greet = false)`
+```
+._concurrencyProcesses(filename = __filename, options = {}, greet = false)
+```
 
+<!--
+#### USAGE
+
+`concurrency.concurrencyProcesses(filename: <string>, options: <Object>, greet: <boolean>)`
+
+```
+.concurrencyProcesses(path.join("node_module\\concurrency.js\\src\\worker.process.js"), 8, {...}, false)
+```
+
+```
+._concurrencyProcesses(path.join("node_module\\concurrency.js\\src\\worker.process.js"), 8, {...}, false)
+```
+-->
 
 ```
 
@@ -163,14 +182,6 @@ processes(path.join("node_module\\concurrency.js\\src\\worker.process.js"), {
 
 ```
 
-
-```
-.concurrencyProcesses(path.join("node_module\\concurrency.js\\src\\worker.process.js"), 8, {...}, false)
-```
-
-```
-._concurrencyProcesses(path.join("node_module\\concurrency.js\\src\\worker.process.js"), 8, {...}, false)
-```
 
 ```
 // Any data type you wish to handle
@@ -275,10 +286,21 @@ options.handlers = {
 
 #### Example
 
-`.concurrencyThreadsAsync(command, options, nodeCmd = true)`
+```
+.concurrencyThreadsAsync(command, options, nodeCmd = true)
+```
 
-`._concurrencyThreadsAsync(command, options, nodeCmd = true)`
+```
+._concurrencyThreadsAsync(command, options, nodeCmd = true)
+```
 
+```
+.concurrencyThreadsAsync("node_module\\concurrency.js\\src\\demos\\demos.threads.js", {...}, true)
+```
+
+```
+._concurrencyThreadsAsync("node_module\\concurrency.js\\src\\demos\\demos.threads.js", {...}, true)
+```
 
 ```
 
@@ -294,14 +316,6 @@ let threads = threadsAsync("node_module\\concurrency.js\\src\\demos\\demos.threa
     }
 );
 
-```
-
-```
-.concurrencyThreadsAsync("node_module\\concurrency.js\\src\\demos\\demos.threads.js", {...}, true)
-```
-
-```
-._concurrencyThreadsAsync("node_module\\concurrency.js\\src\\demos\\demos.threads.js", {...}, true)
 ```
 
 
