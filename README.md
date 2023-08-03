@@ -57,9 +57,7 @@ Find the demos in the [demos folder](./demos)
 
 #### USAGE
 
-```
-concurrency.concurrencyClusters(filename: <string>, num: <number>, options: <Object>, greet: <boolean>)
-```
+`concurrency.concurrencyClusters(filename: <string>, num: <number>, options: <Object>, greet: <boolean>)`
 
 
 #### Example
@@ -142,9 +140,7 @@ options.handlers = {
 
 #### USAGE
 
-```
-concurrency.concurrencyProcesses(filename: <string>, options: <Object>, greet: <boolean>)
-```
+`concurrency.concurrencyProcesses(filename: <string>, options: <Object>, greet: <boolean>)`
 
 
 #### Example
@@ -218,9 +214,7 @@ options.handlers = {
 
 #### USAGE
 
-```
-concurrency.concurrencyThreads(filename: <string>, options: <Object>, greet: <boolean>)
-```
+`concurrency.concurrencyThreads(filename: <string>, options: <Object>, greet: <boolean>)`
 
 
 #### Example
@@ -252,9 +246,7 @@ threads(__filename, {
 
 #### USAGE
 
-```
-concurrency.concurrencyMultipleThreads(filename: <string>, num: <number>, options: <Object>, greet: <boolean>)
-```
+`concurrency.concurrencyMultipleThreads(filename: <string>, num: <number>, options: <Object>, greet: <boolean>)`
 
 
 #### Example
@@ -293,9 +285,7 @@ options.handlers = {
 
 #### USAGE
 
-```
-concurrency.concurrencyThreadsAsync(command: <string>, options: <Object>, nodeCmd: <boolean>)
-```
+`concurrency.concurrencyThreadsAsync(command: <string>, options: <Object>, nodeCmd: <boolean>)`
 
 
 #### Example
@@ -345,9 +335,7 @@ let threads = threadsAsync("node_module\\concurrency.js\\src\\demos\\demos.threa
 
 #### USAGE
 
-```
-loadbalancer.threading(serverOptions: <Object>)
-```
+`loadbalancer.threading(serverOptions: <Object>)`
 
 
 #### Example
@@ -406,7 +394,7 @@ threading({
 
 #### USAGE
 
-```loadbalancer.threadingMultiple(serverOptions: <Object>)```
+`loadbalancer.threadingMultiple(serverOptions: <Object>)`
 
 
 #### Example
@@ -465,7 +453,7 @@ threadingMultiple({
 
 #### USAGE
 
-```loadbalancer.processing(serverOptions: <Object>)```
+`loadbalancer.processing(serverOptions: <Object>)`
 
 
 #### Example
@@ -524,7 +512,7 @@ processing({
 
 #### USAGE
 
-```loadbalancer.processingMultiple(serverOptions: <Object>)```
+`loadbalancer.processingMultiple(serverOptions: <Object>)`
 
 
 #### Example
