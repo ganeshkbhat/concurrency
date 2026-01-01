@@ -11,9 +11,9 @@
     "import": "./index.mjs"
   },
   "devDependencies": {
-    "chai": "^4.3.6",
+    "chai": "^4.5.0",
     "express": "^4.18.2",
-    "mocha": "^10.2.0",
+    "mocha": "^10.8.2",
     "npm-check": "^6.0.1",
     "sinon": "^14.0.0",
     "unimported": "^1.22.0"
