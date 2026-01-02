@@ -4,6 +4,7 @@ const os = require('os');
 
 /**
  * Functional Worker Pool Factory
+ * // renme function - runInThread
  * @param {string} taskFilePath - Path to the file containing task functions
  */
 function createWorkerPool(size, taskFilePath) {
