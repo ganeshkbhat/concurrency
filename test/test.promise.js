@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { runPromiseTasks } = require('./tasks.async');
+const { runPromiseTasks } = require('../tasks.async');
 const path = require('path');
 
 describe('Promise-Based Task Runner', () => {
