@@ -19,7 +19,7 @@ Run tasks in async mode using promises as simple as below:
 
 ```
 // This repository's root folder
-const { runPromiseTasks } = require("../tasks.async.js");
+const { runPromiseTasks } = require("concurrency.js") // require("../tasks.async.js");
 
 // --- Execution Plan using String Names ---
 const executionPlan = [
@@ -48,7 +48,7 @@ Run tasks in a mix of nodejs code and run threaded code of nodejs execution plan
 
 ```
 // This repository's root folder
-const {runThreadedTasks, createWorkerPool} = require("../tasks.thread")
+const {runThreadedTasks, createWorkerPool} = require("concurrency.js")  // require("../tasks.thread")
 
 // --- Execution Plan ---
 const executionPlan = [
@@ -82,7 +82,7 @@ Run tasks in a mix of nodejs code and run process worker code of nodejs executio
 
 ```
 // This repository's root folder
-const { runProcessTasks, runInProcess }  = require("../tasks.process");
+const { runProcessTasks, runInProcess }  = require("concurrency.js")  // require("../tasks.process");
 
 // --- Execution Plan ---
 const executionPlan = [
